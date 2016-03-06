@@ -44,4 +44,10 @@ class CreationTest {
     fun repeatTestStart0CountNegative() {
         repeat(0, -1).toList();
     }
+
+    @Test
+    fun emptyTest() {
+        val result = empty<Int>().toList();
+        Assert.assertEquals(result, listOf<Int>());
+    }
 }

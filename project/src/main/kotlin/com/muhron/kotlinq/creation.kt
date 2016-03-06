@@ -17,3 +17,5 @@ fun<T> repeat(element: T, count: Int): Sequence<T> {
 
     return range(0, count).map { element }
 }
+
+fun<T> empty(): Sequence<T> = emptySequence()
