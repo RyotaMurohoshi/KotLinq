@@ -1,6 +1,9 @@
 package com.muhron.kotlinq
 
-internal  class Grouping<K, E> internal constructor(private val entry: Map.Entry<K, List<E>>) : IGrouping<K, E> {
+import java.util.*
+import kotlin.comparisons.*
+
+internal class Grouping<K, E> internal constructor(private val entry: Map.Entry<K, List<E>>) : IGrouping<K, E> {
     override val key: K
         get() = entry.key
 
@@ -19,4 +22,20 @@ class Lookup<K, E> internal constructor(val list: List<IGrouping<K, E>>) : ILook
 
     override val count: Int
         get() = list.size
+}
+
+class OrderedEnumerable<E> internal constructor(private val originalSequence: Sequence<E>, private val elementComparator: Comparator<E>) : IOrderedEnumerable<E> {
+    override fun iterator(): Iterator<E> = originalSequence.sortedWith(elementComparator).iterator()
+
+    override fun <K : Comparable<K>> createOrderedEnumerable(keySelector: (E) -> K, comparator: Comparator<in K>, descending: Boolean): IOrderedEnumerable<E> {
+        val newComparator = compareBy(comparator, keySelector)
+
+        val childComparator =
+                if (descending)
+                    elementComparator.thenDescending(newComparator)
+                else
+                    elementComparator.then(newComparator)
+
+        return OrderedEnumerable(originalSequence, childComparator)
+    }
 }
