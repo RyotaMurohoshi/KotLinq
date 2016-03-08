@@ -17,6 +17,23 @@ fun <TOuter, TInner, TKey, TResult> join(
     }
 }
 
+fun <TOuter, TInner, TKey, TResult> groupJoin(
+        outer: Sequence<TOuter>,
+        inner: Sequence<TInner>,
+        outerKeySelector: (TOuter) -> TKey,
+        innerKeySelector: (TInner) -> TKey,
+        resultSelector: (TOuter, Sequence<TInner>) -> TResult): Sequence<TResult> {
+    return Sequence {
+        val innerLookup = inner.toLookup(innerKeySelector)
+        outer.map { outerElement ->
+            val key = outerKeySelector(outerElement)
+            val innerElements = innerLookup[key]
+
+            resultSelector(outerElement, innerElements)
+        }.iterator()
+    }
+}
+
 fun range(start: Int, count: Int): Sequence<Int> {
     require(count >= 0, { "count value must be positive or 0." })
 
