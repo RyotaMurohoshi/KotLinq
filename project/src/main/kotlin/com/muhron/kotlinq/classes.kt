@@ -14,7 +14,7 @@ class Lookup<K, E> internal constructor(val list: List<IGrouping<K, E>>) : ILook
     fun <R> applyResultSelector(resultSelector: (K, Sequence<E>) -> R): Sequence<R>
             = asSequence().map { resultSelector(it.key, it) }
 
-    override fun get(key: K): Sequence<E> = list.firstOrNull { it.key == key } ?: empty()
+    override operator fun get(key: K): Sequence<E> = list.firstOrNull { it.key == key } ?: empty()
 
     override fun iterator(): Iterator<IGrouping<K, E>> = list.iterator()
 
