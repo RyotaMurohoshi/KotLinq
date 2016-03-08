@@ -5,6 +5,7 @@ data class PersonId(val id: Int)
 data class Units(val id: UnitsId, val name: String)
 data class Person(val id: PersonId, val name: String, val unitsId: UnitsId)
 data class PersonViewModel(val name: String, val teamName: String)
+data class UnitViewModel(val name: String, val persons: List<Person>)
 
 val units: List<Units> = listOf(
         Units(UnitsId(0), "Printemps"),
