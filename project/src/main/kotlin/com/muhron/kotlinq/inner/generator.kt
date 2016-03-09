@@ -22,7 +22,8 @@ import com.muhron.kotlinq.inner.Calculator
     val calculatorMethods = typeDefs.map { createCalculatorAverage(it) } +
             combination(listOf("min", "max"), typeDefs).map { createCalculatorMinMax(it.second, it.first) } +
             numberTypes.map { createCalculatorAverageArray(it) } +
-            combination(listOf("min", "max"), numberTypes).map { createCalculatorMinMaxArray(it.second, it.first) }
+            combination(listOf("min", "max"), numberTypes).map { createCalculatorMinMaxArray(it.second, it.first) } +
+            combination(listOf("min", "max"), collectionTypes).map { createCalculatorMinMaxT(it.second, it.first) }
 
     val calculatorSource = calculatorMethods.joinToString(separator = "\n", prefix = calculatorPrefix, postfix = calculatorPostfix)
     File("src/main/kotlin/com/muhron/kotlinq/inner/calculator.kt").writeText(calculatorSource)
@@ -31,11 +32,15 @@ import com.muhron.kotlinq.inner.Calculator
     val averageMethodsSource = averageMethods.joinToString (separator = "\n", prefix = extensionsPrefix, postfix = "\n")
     File("src/main/kotlin/com/muhron/kotlinq/average.kt").writeText(averageMethodsSource)
 
-    val minMethods = typeDefs.map { createMinMaxExtension(it, "min") } + numberTypes.map { createMinMaxArrayExtension(it, "min") }
+    val minMethods = typeDefs.map { createMinMaxExtension(it, "min") } +
+            numberTypes.map { createMinMaxArrayExtension(it, "min") } +
+            collectionTypes.map { createExtensionMinMaxT(it, "min") }
     val minMethodsSource = minMethods.joinToString (separator = "\n", prefix = extensionsPrefix, postfix = "\n")
     File("src/main/kotlin/com/muhron/kotlinq/min.kt").writeText(minMethodsSource)
 
-    val maxMethods = typeDefs.map { createMinMaxExtension(it, "max") } + numberTypes.map { createMinMaxArrayExtension(it, "max") }
+    val maxMethods = typeDefs.map { createMinMaxExtension(it, "max") } +
+            numberTypes.map { createMinMaxArrayExtension(it, "max") } +
+            collectionTypes.map { createExtensionMinMaxT(it, "max") }
     val maxMethodsSource = maxMethods.joinToString (separator = "\n", prefix = extensionsPrefix, postfix = "\n")
     File("src/main/kotlin/com/muhron/kotlinq/max.kt").writeText(maxMethodsSource)
 }
@@ -86,3 +91,12 @@ fun ${numberTypeName}Array.$methodName(): $numberTypeName {
 
 fun <T1, T2> combination(list1: List<T1>, list2: List<T2>): List<Pair<T1, T2>> =
         list1.flatMap { t1 -> list2.map { t2 -> t1 to t2 } }
+
+fun createCalculatorMinMaxT(collectionTypeName: String, methodName: String) = """
+    fun <T : Comparable<T>> $methodName(${collectionTypeName.toLowerCase()}: $collectionTypeName<T>): T = ${collectionTypeName.toLowerCase()}.$methodName()!!"""
+
+fun createExtensionMinMaxT(collectionTypeName: String, methodName: String): String = """
+fun <T : Comparable<T>> $collectionTypeName<T>.$methodName(): T {
+    require(any()) { "empty" }
+    return Calculator.$methodName(this)
+}"""
