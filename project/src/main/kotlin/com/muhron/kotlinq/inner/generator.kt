@@ -28,19 +28,26 @@ import com.muhron.kotlinq.inner.Calculator
     val calculatorSource = calculatorMethods.joinToString(separator = "\n", prefix = calculatorPrefix, postfix = calculatorPostfix)
     File("src/main/kotlin/com/muhron/kotlinq/inner/calculator.kt").writeText(calculatorSource)
 
-    val averageMethods = typeDefs.map { createAverageExtension(it) } + numberTypes.map { createAverageArrayExtension(it) }
+    val averageMethods = typeDefs.map { createAverageExtension(it) } +
+            numberTypes.map { createAverageArrayExtension(it) } +
+            typeDefs.map { createSelectorAverage(it.collectionTypeName, it.numberTypeName) } +
+            combination(numberTypes, numberTypes).map { createSelectorAverageArray(it.first, it.second) }
     val averageMethodsSource = averageMethods.joinToString (separator = "\n", prefix = extensionsPrefix, postfix = "\n")
     File("src/main/kotlin/com/muhron/kotlinq/average.kt").writeText(averageMethodsSource)
 
     val minMethods = typeDefs.map { createMinMaxExtension(it, "min") } +
             numberTypes.map { createMinMaxArrayExtension(it, "min") } +
-            collectionTypes.map { createExtensionMinMaxT(it, "min") }
+            collectionTypes.map { createExtensionMinMaxT(it, "min") } +
+            typeDefs.map { createSelectorMinMax(it.collectionTypeName, it.numberTypeName, "min") } +
+            combination(numberTypes, numberTypes).map { createSelectorMinMaxArray(it.first, it.second, "min") }
     val minMethodsSource = minMethods.joinToString (separator = "\n", prefix = extensionsPrefix, postfix = "\n")
     File("src/main/kotlin/com/muhron/kotlinq/min.kt").writeText(minMethodsSource)
 
     val maxMethods = typeDefs.map { createMinMaxExtension(it, "max") } +
             numberTypes.map { createMinMaxArrayExtension(it, "max") } +
-            collectionTypes.map { createExtensionMinMaxT(it, "max") }
+            collectionTypes.map { createExtensionMinMaxT(it, "max") } +
+            typeDefs.map { createSelectorMinMax(it.collectionTypeName, it.numberTypeName, "max") } +
+            combination(numberTypes, numberTypes).map { createSelectorMinMaxArray(it.first, it.second, "max") }
     val maxMethodsSource = maxMethods.joinToString (separator = "\n", prefix = extensionsPrefix, postfix = "\n")
     File("src/main/kotlin/com/muhron/kotlinq/max.kt").writeText(maxMethodsSource)
 }
@@ -100,3 +107,18 @@ fun <T : Comparable<T>> $collectionTypeName<T>.$methodName(): T {
     require(any()) { "empty" }
     return Calculator.$methodName(this)
 }"""
+
+fun createSelectorMinMax(collectionType: String, numberType: String, methodName: String) = """
+fun <T> $collectionType<T>.$methodName(selector: (T) -> $numberType): $numberType = map(selector).$methodName()"""
+
+fun createSelectorAverage(collectionType: String, numberType: String) = """
+@JvmName("averageOf$numberType")
+fun <T> $collectionType<T>.average(selector: (T) -> $numberType): Double = map(selector).average()"""
+
+fun createSelectorAverageArray(arrayNumberType: String, selectorNumberType: String) = """
+@JvmName("averageOf$selectorNumberType")
+fun ${arrayNumberType}Array.average(selector: ($arrayNumberType) -> $selectorNumberType): Double = map(selector).average()"""
+
+fun createSelectorMinMaxArray(arrayNumberType: String, selectorNumberType: String, methodName: String) = """
+@JvmName("${methodName}Of$selectorNumberType")
+fun ${arrayNumberType}Array.$methodName(selector: ($arrayNumberType) -> $selectorNumberType): $selectorNumberType = map(selector).$methodName()"""
