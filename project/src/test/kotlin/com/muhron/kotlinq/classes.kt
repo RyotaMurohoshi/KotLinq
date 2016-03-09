@@ -27,3 +27,10 @@ val persons: List<Person> = listOf(
         Person(PersonId(9), "Alisa", UnitsId(-1)),
         Person(PersonId(10), "Yukiho", UnitsId(-1))
 )
+
+open class Super
+
+class Sub : Super()
+
+class A
+class B
