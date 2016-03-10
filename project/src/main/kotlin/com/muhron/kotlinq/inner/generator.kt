@@ -21,8 +21,10 @@ import com.muhron.kotlinq.inner.Calculator
 
     val calculatorMethods = typeDefs.map { createCalculatorAverage(it) } +
             combination(listOf("min", "max"), typeDefs).map { createCalculatorMinMax(it.second, it.first) } +
+            typeDefs.map { createCalculatorSum(it) } +
             numberTypes.map { createCalculatorAverageArray(it) } +
             combination(listOf("min", "max"), numberTypes).map { createCalculatorMinMaxArray(it.second, it.first) } +
+            numberTypes.map { createCalculatorSumArray(it) } +
             combination(listOf("min", "max"), collectionTypes).map { createCalculatorMinMaxT(it.second, it.first) }
 
     val calculatorSource = calculatorMethods.joinToString(separator = "\n", prefix = calculatorPrefix, postfix = calculatorPostfix)
@@ -53,55 +55,79 @@ import com.muhron.kotlinq.inner.Calculator
             numberTypes.map { createSelectorMinMaxMap(it, "max") }
     val maxMethodsSource = maxMethods.joinToString (separator = "\n", prefix = extensionsPrefix, postfix = "\n")
     File("src/main/kotlin/com/muhron/kotlinq/max.kt").writeText(maxMethodsSource)
+
+    val sumMethods = typeDefs.map { createSumExtension(it) } +
+            numberTypes.map { createSumArrayExtension(it) } +
+            typeDefs.map { createSelectorSum(it.collectionTypeName, it.numberTypeName) } +
+            combination(numberTypes, numberTypes).map { createSelectorSumArray(it.first, it.second) } +
+            numberTypes.map { createSelectorSumMap(it) }
+    val sumMethodsSource = sumMethods.joinToString (separator = "\n", prefix = extensionsPrefix, postfix = "\n")
+    File("src/main/kotlin/com/muhron/kotlinq/sum.kt").writeText(sumMethodsSource)
 }
 
 data class TypeDef(val collectionTypeName: String, val numberTypeName: String)
 
-// Calcluators template
-fun createCalculatorAverage(typeDef: TypeDef) = """
-    @JvmName("averageOf${typeDef.numberTypeName}")
-    fun average(${typeDef.collectionTypeName.toLowerCase()}: ${typeDef.collectionTypeName}<${typeDef.numberTypeName}>): Double = ${typeDef.collectionTypeName.toLowerCase()}.average()"""
+// calcluator method
+fun createCalculatorAverage(typeDef: TypeDef) =
+        createCalculator(typeDef, "Double", "average")
 
-fun createCalculatorAverageArray(numberTypeName: String) = """
-    fun average(${numberTypeName.toLowerCase()}Array: ${numberTypeName}Array): Double = ${numberTypeName.toLowerCase()}Array.average()"""
+fun createCalculatorMinMax(typeDef: TypeDef, methodName: String) =
+        createCalculator(typeDef, typeDef.numberTypeName, methodName, "!!")
 
-fun createCalculatorMinMax(typeDef: TypeDef, methodName: String) = """
+fun createCalculatorSum(typeDef: TypeDef) =
+        createCalculator(typeDef, toSumReturnType(typeDef.numberTypeName), "sum")
+
+fun createCalculator(typeDef: TypeDef, returnType: String, methodName: String, methodSuffix: String = "") = """
     @JvmName("${methodName}Of${typeDef.numberTypeName}")
-    fun $methodName(${typeDef.collectionTypeName.toLowerCase()}: ${typeDef.collectionTypeName}<${typeDef.numberTypeName}>): ${typeDef.numberTypeName} = ${typeDef.collectionTypeName.toLowerCase()}.$methodName()!!"""
+    fun $methodName(${typeDef.collectionTypeName.toLowerCase()}: ${typeDef.collectionTypeName}<${typeDef.numberTypeName}>): $returnType = ${typeDef.collectionTypeName.toLowerCase()}.$methodName()$methodSuffix"""
 
-fun createCalculatorMinMaxArray(numberTypeName: String, methodName: String) = """
-    fun $methodName(${numberTypeName.toLowerCase()}Array: ${numberTypeName}Array): $numberTypeName = ${numberTypeName.toLowerCase()}Array.$methodName()!!"""
+// calculator method with Array
+fun createCalculatorAverageArray(numberTypeName: String) =
+        createCalculatorArray(numberTypeName, "Double", "average")
+
+fun createCalculatorMinMaxArray(numberTypeName: String, methodName: String) =
+        createCalculatorArray(numberTypeName, numberTypeName, methodName, "!!")
+
+fun createCalculatorSumArray(numberTypeName: String) =
+        createCalculatorArray(numberTypeName, toSumReturnType(numberTypeName), "sum")
+
+fun createCalculatorArray(numberTypeName: String, retunTypeName: String, methodName: String, methodSuffix: String = "") = """
+    fun $methodName(${numberTypeName.toLowerCase()}Array: ${numberTypeName}Array): $retunTypeName = ${numberTypeName.toLowerCase()}Array.$methodName()$methodSuffix"""
 
 // Extensions template
-fun createAverageExtension(typeDef: TypeDef) = """
-@JvmName("averageOf${typeDef.numberTypeName}")
-fun ${typeDef.collectionTypeName}<${typeDef.numberTypeName}>.average(): Double {
-    require(any()) { "empty." }
-    return Calculator.average(this)
-}"""
+fun createAverageExtension(typeDef: TypeDef) =
+        createExtension(typeDef, "Double", "average")
 
-fun createMinMaxExtension(typeDef: TypeDef, methodName: String) = """
+fun createMinMaxExtension(typeDef: TypeDef, methodName: String) =
+        createExtension(typeDef, typeDef.numberTypeName, methodName)
+
+fun createSumExtension(typeDef: TypeDef) =
+        createExtension(typeDef, toSumReturnType(typeDef.numberTypeName), "sum")
+
+fun createExtension(typeDef: TypeDef, returnType: String, methodName: String) = """
 @JvmName("${methodName}Of${typeDef.numberTypeName}")
-fun ${typeDef.collectionTypeName}<${typeDef.numberTypeName}>.$methodName(): ${typeDef.numberTypeName} {
+fun ${typeDef.collectionTypeName}<${typeDef.numberTypeName}>.$methodName(): $returnType {
     require(any()) { "empty." }
     return Calculator.$methodName(this)
 }"""
 
-fun createAverageArrayExtension(numberTypeName: String) = """
-fun ${numberTypeName}Array.average(): Double {
-    require(any()) { "empty." }
-    return Calculator.average(this)
-}"""
+// methods for Array
+fun createAverageArrayExtension(numberType: String) =
+        createArrayExtension(numberType, "Double", "average")
 
-fun createMinMaxArrayExtension(numberTypeName: String, methodName: String) = """
-fun ${numberTypeName}Array.$methodName(): $numberTypeName {
+fun createMinMaxArrayExtension(numberType: String, methodName: String) =
+        createArrayExtension(numberType, numberType, methodName)
+
+fun createSumArrayExtension(numberType: String) =
+        createArrayExtension(numberType, toSumReturnType(numberType), "sum")
+
+fun createArrayExtension(numberType: String, returnType: String, methodName: String) = """
+fun ${numberType}Array.$methodName(): $returnType {
     require(any()) { "empty." }
     return Calculator.$methodName(this)
 }"""
 
-fun <T1, T2> combination(list1: List<T1>, list2: List<T2>): List<Pair<T1, T2>> =
-        list1.flatMap { t1 -> list2.map { t2 -> t1 to t2 } }
-
+// min and max for <T : Comparable<T>> xxx<T>
 fun createCalculatorMinMaxT(collectionTypeName: String, methodName: String) = """
     fun <T : Comparable<T>> $methodName(${collectionTypeName.toLowerCase()}: $collectionTypeName<T>): T = ${collectionTypeName.toLowerCase()}.$methodName()!!"""
 
@@ -111,25 +137,54 @@ fun <T : Comparable<T>> $collectionTypeName<T>.$methodName(): T {
     return Calculator.$methodName(this)
 }"""
 
-fun createSelectorMinMax(collectionType: String, numberType: String, methodName: String) = """
-fun <T> $collectionType<T>.$methodName(selector: (T) -> $numberType): $numberType = map(selector).$methodName()"""
+// methods with selector
+fun createSelectorAverage(collectionType: String, numberType: String) =
+        createSelector(collectionType, numberType, "Double", "average")
 
-fun createSelectorAverage(collectionType: String, numberType: String) = """
-@JvmName("averageOf$numberType")
-fun <T> $collectionType<T>.average(selector: (T) -> $numberType): Double = map(selector).average()"""
+fun createSelectorMinMax(collectionType: String, numberType: String, methodName: String) =
+        createSelector(collectionType, numberType, numberType, methodName)
 
-fun createSelectorAverageArray(arrayNumberType: String, selectorNumberType: String) = """
-@JvmName("averageOf$selectorNumberType")
-fun ${arrayNumberType}Array.average(selector: ($arrayNumberType) -> $selectorNumberType): Double = map(selector).average()"""
+fun createSelectorSum(collectionType: String, numberType: String) =
+        createSelector(collectionType, numberType, toSumReturnType(numberType), "sum")
 
-fun createSelectorMinMaxArray(arrayNumberType: String, selectorNumberType: String, methodName: String) = """
-@JvmName("${methodName}Of$selectorNumberType")
-fun ${arrayNumberType}Array.$methodName(selector: ($arrayNumberType) -> $selectorNumberType): $selectorNumberType = map(selector).$methodName()"""
-
-fun createSelectorAverageMap(numberType: String) = """
-@JvmName("averageOf$numberType")
-fun <K, V> Map<K, V>.average(selector: (Map.Entry<K, V>) -> $numberType): Double = map(selector).average()"""
-
-fun createSelectorMinMaxMap(numberType: String, methodName: String) = """
+fun createSelector(collectionType: String, numberType: String, returnType: String, methodName: String) = """
 @JvmName("${methodName}Of$numberType")
-fun <K, V> Map<K, V>.$methodName(selector: (Map.Entry<K, V>) -> $numberType): $numberType = map(selector).$methodName()"""
+fun <T> $collectionType<T>.$methodName(selector: (T) -> $numberType): $returnType = map(selector).$methodName()"""
+
+// methods with selector for Array
+fun createSelectorAverageArray(arrayNumberType: String, selectorNumberType: String) =
+        createSelectorArray(arrayNumberType, selectorNumberType, "Double", "average")
+
+fun createSelectorMinMaxArray(arrayNumberType: String, selectorNumberType: String, methodName: String) =
+        createSelectorArray(arrayNumberType, selectorNumberType, selectorNumberType, methodName)
+
+fun createSelectorSumArray(arrayNumberType: String, selectorNumberType: String) =
+        createSelectorArray(arrayNumberType, selectorNumberType, toSumReturnType(selectorNumberType), "sum")
+
+fun createSelectorArray(arrayNumberType: String, selectorNumberType: String, returnType: String, methodName: String) = """
+@JvmName("${methodName}Of$selectorNumberType")
+fun ${arrayNumberType}Array.$methodName(selector: ($arrayNumberType) -> $selectorNumberType): $returnType = map(selector).$methodName()"""
+
+// methods with selector for Map
+fun createSelectorAverageMap(numberTypeName: String) = createSelectorMap(numberTypeName, "Double", "average")
+
+fun createSelectorMinMaxMap(numberTypeName: String, methodName: String) = createSelectorMap(numberTypeName, numberTypeName, methodName)
+
+fun createSelectorSumMap(numberTypeName: String): String = createSelectorMap(numberTypeName, toSumReturnType(numberTypeName), "sum")
+
+fun createSelectorMap(numberTypeName: String, returnTypeName: String, methodName: String) = """
+@JvmName("${methodName}Of$numberTypeName")
+fun <K, V> Map<K, V>.$methodName(selector: (Map.Entry<K, V>) -> $numberTypeName): $returnTypeName = map(selector).$methodName()"""
+
+fun toSumReturnType(numberTypeName: String): String = when (numberTypeName) {
+    "Int" -> "Int"
+    "Byte" -> "Int"
+    "Short" -> "Int"
+    "Long" -> "Long"
+    "Float" -> "Float"
+    "Double" -> "Double"
+    else -> throw Exception()
+}
+
+fun <T1, T2> combination(list1: List<T1>, list2: List<T2>): List<Pair<T1, T2>> =
+        list1.flatMap { t1 -> list2.map { t2 -> t1 to t2 } }
