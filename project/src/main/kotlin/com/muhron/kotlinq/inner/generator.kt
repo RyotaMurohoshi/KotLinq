@@ -5,7 +5,7 @@ import java.io.File
 fun main(args: Array<String>) {
     val calculatorPrefix = """package com.muhron.kotlinq.inner
 
-object Calculator {"""
+internal object Calculator {"""
 
     val calculatorPostfix = """
 }
