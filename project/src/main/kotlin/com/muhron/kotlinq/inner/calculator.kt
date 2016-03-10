@@ -1,6 +1,6 @@
 package com.muhron.kotlinq.inner
 
-object Calculator {
+internal object Calculator {
     @JvmName("averageOfByte")
     fun average(sequence: Sequence<Byte>): Double = sequence.average()
 
