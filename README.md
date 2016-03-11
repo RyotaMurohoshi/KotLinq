@@ -1,4 +1,4 @@
-# KotLinq (Beta)
+# KotLinq (Beta) [![Circle CI](https://circleci.com/gh/RyotaMurohoshi/KotLinq/tree/master.svg?style=shield)](https://circleci.com/gh/RyotaMurohoshi/KotLinq/tree/master)
 
 LINQ implementation in Kotlin.
 
