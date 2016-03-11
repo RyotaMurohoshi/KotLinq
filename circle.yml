@@ -3,6 +3,8 @@ general:
     - build/reports
 
 machine:
+  java:
+    version: oraclejdk8
   timezone:
     Asia/Tokyo
 
