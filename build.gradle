@@ -11,11 +11,9 @@ apply plugin: 'kotlin'
 
 repositories {
     jcenter()
-    maven { url 'http://dl.bintray.com/ngsw-taro/maven' }
 }
 
 dependencies {
     testCompile 'junit:junit:4.12'
-    testCompile 'com.taroid.knit:knit:0.1.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 }
