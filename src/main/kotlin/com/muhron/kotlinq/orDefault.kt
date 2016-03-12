@@ -77,16 +77,3 @@ fun <K, V> Map<K, V>.singleOrDefault(predicate: (Map.Entry<K, V>) -> Boolean): M
 
 fun <T> Array<T>.singleOrDefault(predicate: (T) -> Boolean): T? =
         singleOrNull(predicate)
-
-// elementAtOrDefault
-fun <T> Sequence<T>.elementAtOrDefault(index: Int): T? =
-        elementAtOrNull(index)
-
-fun <T> Iterable<T>.elementAtOrDefault(index: Int): T? =
-        elementAtOrNull(index)
-
-fun <K, V> Map<K, V>.elementAtOrDefault(index: Int): Map.Entry<K, V>? =
-        asSequence().elementAtOrNull(index)
-
-fun <T> Array<T>.elementAtOrDefault(index: Int): T? =
-        elementAtOrNull(index)
