@@ -2,6 +2,8 @@ package com.muhron.kotlinq
 
 // Sequence has distinct method.
 
+// Iterable<T> and Array<T> have distinct method in kotlin.collections, but their return type are not Sequence<T>.
+// KotLinq redefines distinct methods..
 fun <T> Iterable<T>.distinct(): Sequence<T> =
         asSequence().distinct()
 
