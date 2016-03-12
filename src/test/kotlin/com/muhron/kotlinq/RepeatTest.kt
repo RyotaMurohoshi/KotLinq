@@ -3,8 +3,7 @@ package com.muhron.kotlinq
 import org.junit.Assert
 import org.junit.Test
 
-class CreationTest {
-
+class RepeatTest {
     @Test
     fun repeatTestCount5() {
         val result = repeat("K", 5).toList();
@@ -17,13 +16,8 @@ class CreationTest {
         Assert.assertEquals(result, emptyList<String>());
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test(expected = IndexOutOfBoundsException::class)
     fun repeatTestCountNegative() {
         repeat("K", -1).toList();
-    }
-
-    @Test(expected = IllegalArgumentException::class)
-    fun repeatTestStart0CountNegative() {
-        repeat(0, -1).toList();
     }
 }

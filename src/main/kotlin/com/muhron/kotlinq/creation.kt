@@ -34,8 +34,3 @@ fun <TOuter, TInner, TKey, TResult> groupJoin(
     }
 }
 
-fun<T> repeat(element: T, count: Int): Sequence<T> {
-    require(count >= 0, { "count value must be positive or 0." })
-
-    return range(0, count).map { element }
-}
