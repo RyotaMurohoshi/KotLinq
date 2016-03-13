@@ -1,6 +1,6 @@
 package com.muhron.kotlinq
 
-fun <TSource> Sequence<TSource>.defaultIfEmpty(defaultValue: TSource): Sequence<TSource> {
+inline fun <TSource> Sequence<TSource>.defaultIfEmpty(defaultValue: TSource): Sequence<TSource> {
     if (any()) {
         return this
     } else {
@@ -8,16 +8,16 @@ fun <TSource> Sequence<TSource>.defaultIfEmpty(defaultValue: TSource): Sequence<
     }
 }
 
-fun <TSource> Array<TSource>.defaultIfEmpty(defaultValue: TSource): Sequence<TSource> =
+inline fun <TSource> Array<TSource>.defaultIfEmpty(defaultValue: TSource): Sequence<TSource> =
         asSequence().defaultIfEmpty(defaultValue)
 
-fun <TSource> Iterable<TSource>.defaultIfEmpty(defaultValue: TSource): Sequence<TSource> =
+inline fun <TSource> Iterable<TSource>.defaultIfEmpty(defaultValue: TSource): Sequence<TSource> =
         asSequence().defaultIfEmpty(defaultValue)
 
-fun <K, V> Map<K, V>.defaultIfEmpty(defaultValue: Map.Entry<K, V>): Sequence<Map.Entry<K, V>> =
+inline fun <K, V> Map<K, V>.defaultIfEmpty(defaultValue: Map.Entry<K, V>): Sequence<Map.Entry<K, V>> =
         asSequence().defaultIfEmpty(defaultValue)
 
-fun <TSource> Sequence<TSource?>.defaultIfEmpty(): Sequence<TSource?> {
+inline fun <TSource> Sequence<TSource?>.defaultIfEmpty(): Sequence<TSource?> {
     if (any()) {
         return this
     } else {
@@ -25,8 +25,8 @@ fun <TSource> Sequence<TSource?>.defaultIfEmpty(): Sequence<TSource?> {
     }
 }
 
-fun <TSource> Array<TSource?>.defaultIfEmpty(): Sequence<TSource?> =
+inline fun <TSource> Array<TSource?>.defaultIfEmpty(): Sequence<TSource?> =
         asSequence().defaultIfEmpty()
 
-fun <TSource> Iterable<TSource?>.defaultIfEmpty(): Sequence<TSource?> =
+inline fun <TSource> Iterable<TSource?>.defaultIfEmpty(): Sequence<TSource?> =
         asSequence().defaultIfEmpty()
