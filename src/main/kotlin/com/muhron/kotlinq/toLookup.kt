@@ -1,26 +1,25 @@
 package com.muhron.kotlinq
 
-fun <T, K> Sequence<T>.toLookup(keySelector: (T) -> K): ILookup<K, T>
+fun <TSource, TKey> Sequence<TSource>.toLookup(keySelector: (TSource) -> TKey): ILookup<TKey, TSource>
         = Lookup(groupBy(keySelector = keySelector, valueTransform = { it }).map { Grouping(it) })
 
-fun <T, K> Iterable<T>.toLookup(keySelector: (T) -> K): ILookup<K, T>
+fun <TSource, TKey> Iterable<TSource>.toLookup(keySelector: (TSource) -> TKey): ILookup<TKey, TSource>
         = asSequence().toLookup(keySelector)
 
-fun <T, K> Array<T>.toLookup(keySelector: (T) -> K): ILookup<K, T>
+fun <TSource, TKey> Array<TSource>.toLookup(keySelector: (TSource) -> TKey): ILookup<TKey, TSource>
         = asSequence().toLookup(keySelector)
 
-fun <K0, K1, V> Map<K0, V>.toLookup(keySelector: (Map.Entry<K0, V>) -> K1): ILookup<K1, Map.Entry<K0, V>>
+fun <K, V, TKey> Map<K, V>.toLookup(keySelector: (Map.Entry<K, V>) -> TKey): ILookup<TKey, Map.Entry<K, V>>
         = asSequence().toLookup(keySelector)
 
-fun <T, K, E> Sequence<T>.toLookup(keySelector: (T) -> K, elementSelector: (T) -> E): ILookup<K, E>
+fun <TSource, TKey, TElement> Sequence<TSource>.toLookup(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): ILookup<TKey, TElement>
         = Lookup(groupBy(keySelector = keySelector, valueTransform = elementSelector).map { Grouping(it) })
 
-fun <T, K, E> Iterable<T>.toLookup(keySelector: (T) -> K, elementSelector: (T) -> E): ILookup<K, E>
+fun <TSource, TKey, TElement> Iterable<TSource>.toLookup(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): ILookup<TKey, TElement>
         = asSequence().toLookup(keySelector, elementSelector)
 
-fun <T, K, E> Array<T>.toLookup(keySelector: (T) -> K, elementSelector: (T) -> E): ILookup<K, E>
+fun <TSource, TKey, TElement> Array<TSource>.toLookup(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): ILookup<TKey, TElement>
         = asSequence().toLookup(keySelector, elementSelector)
 
-fun <K0, K1, V0, V1> Map<K0, V0>.toLookup(keySelector: (Map.Entry<K0, V0>) -> K1, elementSelector: (Map.Entry<K0, V0>) -> V1): ILookup<K1, V1>
+fun <K, V, TKey, TElement> Map<K, V>.toLookup(keySelector: (Map.Entry<K, V>) -> TKey, elementSelector: (Map.Entry<K, V>) -> TElement): ILookup<TKey, TElement>
         = asSequence().toLookup(keySelector, elementSelector)
-

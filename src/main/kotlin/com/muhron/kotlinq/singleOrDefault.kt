@@ -1,7 +1,7 @@
 import com.muhron.kotlinq.where
 
 // singleOrDefault
-fun <T> Sequence<T>.singleOrDefault(): T? {
+fun <TSource> Sequence<TSource>.singleOrDefault(): TSource? {
     val iterator = iterator()
     if (!iterator.hasNext()) {
         return null
@@ -13,24 +13,24 @@ fun <T> Sequence<T>.singleOrDefault(): T? {
     return single
 }
 
-fun <T> Iterable<T>.singleOrDefault(): T? =
+fun <TSource> Iterable<TSource>.singleOrDefault(): TSource? =
         asSequence().singleOrDefault()
 
 fun <K, V> Map<K, V>.singleOrDefault(): Map.Entry<K, V>? =
         asSequence().singleOrDefault()
 
-fun <T> Array<T>.singleOrDefault(): T? =
+fun <TSource> Array<TSource>.singleOrDefault(): TSource? =
         asSequence().singleOrDefault()
 
 // singleOrDefault with predicate
-fun <T> Sequence<T>.singleOrDefault(predicate: (T) -> Boolean): T? =
+fun <TSource> Sequence<TSource>.singleOrDefault(predicate: (TSource) -> Boolean): TSource? =
         where(predicate).singleOrDefault()
 
-fun <T> Iterable<T>.singleOrDefault(predicate: (T) -> Boolean): T? =
+fun <TSource> Iterable<TSource>.singleOrDefault(predicate: (TSource) -> Boolean): TSource? =
         asSequence().singleOrDefault(predicate)
 
 fun <K, V> Map<K, V>.singleOrDefault(predicate: (Map.Entry<K, V>) -> Boolean): Map.Entry<K, V>? =
         asSequence().singleOrDefault(predicate)
 
-fun <T> Array<T>.singleOrDefault(predicate: (T) -> Boolean): T? =
+fun <TSource> Array<TSource>.singleOrDefault(predicate: (TSource) -> Boolean): TSource? =
         asSequence().singleOrDefault(predicate)

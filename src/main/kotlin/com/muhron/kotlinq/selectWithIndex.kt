@@ -1,13 +1,13 @@
 package com.muhron.kotlinq
 
-fun <T, R> Sequence<T>.selectWithIndex(selector: (T, Int) -> R): Sequence<R> =
+fun <TSource, TResult> Sequence<TSource>.selectWithIndex(selector: (TSource, Int) -> TResult): Sequence<TResult> =
         mapIndexed { i, t -> selector(t, i) }
 
-fun <T, R> Iterable<T>.selectWithIndex(selector: (T, Int) -> R): Sequence<R> =
+fun <TSource, TResult> Iterable<TSource>.selectWithIndex(selector: (TSource, Int) -> TResult): Sequence<TResult> =
         asSequence().selectWithIndex(selector)
 
-fun <K, V, R> Map<K, V>.selectWithIndex(selector: (Map.Entry<K, V>, Int) -> R): Sequence<R> =
+fun <K, V, TResult> Map<K, V>.selectWithIndex(selector: (Map.Entry<K, V>, Int) -> TResult): Sequence<TResult> =
         asSequence().selectWithIndex(selector)
 
-fun <T, R> Array<T>.selectWithIndex(selector: (T, Int) -> R): Sequence<R> =
+fun <TSource, TResult> Array<TSource>.selectWithIndex(selector: (TSource, Int) -> TResult): Sequence<TResult> =
         asSequence().selectWithIndex(selector)

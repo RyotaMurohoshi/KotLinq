@@ -3,31 +3,31 @@ package com.muhron.kotlinq
 import java.util.*
 import kotlin.comparisons.*
 
-internal class Grouping<K, E> internal constructor(private val entry: Map.Entry<K, List<E>>) : IGrouping<K, E> {
-    override val key: K
+internal class Grouping<TKey, TElement> internal constructor(private val entry: Map.Entry<TKey, List<TElement>>) : IGrouping<TKey, TElement> {
+    override val key: TKey
         get() = entry.key
 
-    override fun iterator(): Iterator<E> = entry.value.iterator()
+    override fun iterator(): Iterator<TElement> = entry.value.iterator()
 }
 
-class Lookup<K, E> internal constructor(val list: List<IGrouping<K, E>>) : ILookup<K, E> {
-    fun <R> applyResultSelector(resultSelector: (K, Sequence<E>) -> R): Sequence<R>
+class Lookup<TKey, TElement> internal constructor(val list: List<IGrouping<TKey, TElement>>) : ILookup<TKey, TElement> {
+    fun <R> applyResultSelector(resultSelector: (TKey, Sequence<TElement>) -> R): Sequence<R>
             = asSequence().map { resultSelector(it.key, it) }
 
-    override operator fun get(key: K): Sequence<E> = list.firstOrNull { it.key == key } ?: empty()
+    override operator fun get(key: TKey): Sequence<TElement> = list.firstOrNull { it.key == key } ?: empty()
 
-    override fun iterator(): Iterator<IGrouping<K, E>> = list.iterator()
+    override fun iterator(): Iterator<IGrouping<TKey, TElement>> = list.iterator()
 
-    override fun contains(key: K): Boolean = list.any { it.key == key }
+    override fun contains(key: TKey): Boolean = list.any { it.key == key }
 
     override val count: Int
         get() = list.size
 }
 
-class OrderedEnumerable<E> internal constructor(private val originalSequence: Sequence<E>, private val elementComparator: Comparator<E>) : IOrderedEnumerable<E> {
-    override fun iterator(): Iterator<E> = originalSequence.sortedWith(elementComparator).iterator()
+class OrderedEnumerable<TElement> internal constructor(private val originalSequence: Sequence<TElement>, private val elementComparator: Comparator<TElement>) : IOrderedEnumerable<TElement> {
+    override fun iterator(): Iterator<TElement> = originalSequence.sortedWith(elementComparator).iterator()
 
-    override fun <K : Comparable<K>> createOrderedEnumerable(keySelector: (E) -> K, comparator: Comparator<in K>, descending: Boolean): IOrderedEnumerable<E> {
+    override fun <TKey : Comparable<TKey>> createOrderedEnumerable(keySelector: (TElement) -> TKey, comparator: Comparator<in TKey>, descending: Boolean): IOrderedEnumerable<TElement> {
         val newComparator = compareBy(comparator, keySelector)
 
         val childComparator =

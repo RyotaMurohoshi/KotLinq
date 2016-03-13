@@ -2,16 +2,16 @@ package com.muhron.kotlinq
 
 import java.util.Comparator
 
-interface IGrouping<K, E> : Sequence<E> {
-    val key: K
+interface IGrouping<TKey, TElement> : Sequence<TElement> {
+    val key: TKey
 }
 
-interface ILookup<K, E> : Sequence<IGrouping<K, E>> {
+interface ILookup<TKey, TElement> : Sequence<IGrouping<TKey, TElement>> {
     val count: Int
-    operator fun get(key: K): Sequence<E>
-    fun contains(key: K): Boolean
+    operator fun get(key: TKey): Sequence<TElement>
+    fun contains(key: TKey): Boolean
 }
 
-interface IOrderedEnumerable<E> : Sequence<E> {
-    fun <K : Comparable<K>> createOrderedEnumerable(keySelector: (E) -> K, comparator: Comparator<in K>, descending: Boolean): IOrderedEnumerable<E>
+interface IOrderedEnumerable<TElement> : Sequence<TElement> {
+    fun <TKey : Comparable<TKey>> createOrderedEnumerable(keySelector: (TElement) -> TKey, comparator: Comparator<in TKey>, descending: Boolean): IOrderedEnumerable<TElement>
 }

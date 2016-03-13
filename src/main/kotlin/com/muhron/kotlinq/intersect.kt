@@ -1,19 +1,19 @@
 package com.muhron.kotlinq
 
 // for Sequence.
-fun <T> Sequence<T>.intersect(second: Sequence<T>): Sequence<T> =
+fun <TSource> Sequence<TSource>.intersect(second: Sequence<TSource>): Sequence<TSource> =
         Sequence {
             val set = second.toMutableSet()
             filter { set.remove(it) }.iterator()
         }
 
-fun <T> Sequence<T>.intersect(second: Iterable<T>): Sequence<T> =
+fun <TSource> Sequence<TSource>.intersect(second: Iterable<TSource>): Sequence<TSource> =
         Sequence {
             val set = second.toMutableSet()
             filter { set.remove(it) }.iterator()
         }
 
-fun <T> Sequence<T>.intersect(second: Array<T>): Sequence<T> =
+fun <TSource> Sequence<TSource>.intersect(second: Array<TSource>): Sequence<TSource> =
         Sequence {
             val set = second.toMutableSet()
             filter { set.remove(it) }.iterator()
@@ -26,19 +26,19 @@ fun <K, V> Sequence<Map.Entry<K, V>>.intersect(second: Map<K, V>): Sequence<Map.
         }
 
 // for Iterable.
-fun <T> Iterable<T>.intersect(second: Sequence<T>): Sequence<T> =
+fun <TSource> Iterable<TSource>.intersect(second: Sequence<TSource>): Sequence<TSource> =
         Sequence {
             val set = second.toMutableSet()
             filter { set.remove(it) }.iterator()
         }
 
-fun <T> Iterable<T>.intersect(second: Iterable<T>): Sequence<T> =
+fun <TSource> Iterable<TSource>.intersect(second: Iterable<TSource>): Sequence<TSource> =
         Sequence {
             val set = second.toMutableSet()
             filter { set.remove(it) }.iterator()
         }
 
-fun <T> Iterable<T>.intersect(second: Array<T>): Sequence<T> =
+fun <TSource> Iterable<TSource>.intersect(second: Array<TSource>): Sequence<TSource> =
         Sequence {
             val set = second.toMutableSet()
             filter { set.remove(it) }.iterator()
@@ -51,19 +51,19 @@ fun <K, V> Iterable<Map.Entry<K, V>>.intersect(second: Map<K, V>): Sequence<Map.
         }
 
 // for Array.
-fun <T> Array<T>.intersect(second: Sequence<T>): Sequence<T> =
+fun <TSource> Array<TSource>.intersect(second: Sequence<TSource>): Sequence<TSource> =
         Sequence {
             val set = second.toMutableSet()
             filter { set.remove(it) }.iterator()
         }
 
-fun <T> Array<T>.intersect(second: Iterable<T>): Sequence<T> =
+fun <TSource> Array<TSource>.intersect(second: Iterable<TSource>): Sequence<TSource> =
         Sequence {
             val set = second.toMutableSet()
             filter { set.remove(it) }.iterator()
         }
 
-fun <T> Array<T>.intersect(second: Array<T>): Sequence<T> =
+fun <TSource> Array<TSource>.intersect(second: Array<TSource>): Sequence<TSource> =
         Sequence {
             val set = second.toMutableSet()
             filter { set.remove(it) }.iterator()

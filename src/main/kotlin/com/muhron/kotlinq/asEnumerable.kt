@@ -1,11 +1,9 @@
 package com.muhron.kotlinq
 
-// TODO consider remove asEnumerable
+fun <TSource> Sequence<TSource>.asEnumerable(): Sequence<TSource> = asSequence()
 
-fun <T> Sequence<T>.asEnumerable() = asSequence()
+fun <TSource> Array<TSource>.asEnumerable(): Sequence<TSource> = asSequence().asEnumerable()
 
-fun <T> Array<T>.asEnumerable() = asSequence()
+fun <TSource> Iterable<TSource>.asEnumerable(): Sequence<TSource> = asSequence().asEnumerable()
 
-fun <T> Iterable<T>.asEnumerable() = asSequence()
-
-fun <K, V> Map<K, V>.asEnumerable() = asSequence()
+fun <K, V> Map<K, V>.asEnumerable(): Sequence<Map.Entry<K, V>> = asSequence().asEnumerable()

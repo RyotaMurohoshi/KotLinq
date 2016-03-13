@@ -1,39 +1,39 @@
 package com.muhron.kotlinq
 
 // for Sequence.
-fun <T> Sequence<T>.except(second: Sequence<T>): Sequence<T> =
+fun <TSource> Sequence<TSource>.except(second: Sequence<TSource>): Sequence<TSource> =
         distinct().minus(second)
 
-fun <T> Sequence<T>.except(second: Iterable<T>): Sequence<T> =
+fun <TSource> Sequence<TSource>.except(second: Iterable<TSource>): Sequence<TSource> =
         distinct().minus(second)
 
-fun <T> Sequence<T>.except(second: Array<T>): Sequence<T> =
+fun <TSource> Sequence<TSource>.except(second: Array<TSource>): Sequence<TSource> =
         distinct().minus(second)
 
 fun <K, V> Sequence<Map.Entry<K, V>>.except(second: Map<K, V>): Sequence<Map.Entry<K, V>> =
         distinct().minus(second.asSequence())
 
 // for Iterable
-fun <T> Iterable<T>.except(second: Sequence<T>): Sequence<T> =
+fun <TSource> Iterable<TSource>.except(second: Sequence<TSource>): Sequence<TSource> =
         asSequence().except(second)
 
-fun <T> Iterable<T>.except(second: Iterable<T>): Sequence<T> =
+fun <TSource> Iterable<TSource>.except(second: Iterable<TSource>): Sequence<TSource> =
         asSequence().except(second)
 
-fun <T> Iterable<T>.except(second: Array<T>): Sequence<T> =
+fun <TSource> Iterable<TSource>.except(second: Array<TSource>): Sequence<TSource> =
         asSequence().except(second)
 
 fun <K, V> Iterable<Map.Entry<K, V>>.except(second: Map<K, V>): Sequence<Map.Entry<K, V>> =
         asSequence().except(second)
 
 // for Array
-fun <T> Array<T>.except(second: Sequence<T>): Sequence<T> =
+fun <TSource> Array<TSource>.except(second: Sequence<TSource>): Sequence<TSource> =
         asSequence().except(second)
 
-fun <T> Array<T>.except(second: Iterable<T>): Sequence<T> =
+fun <TSource> Array<TSource>.except(second: Iterable<TSource>): Sequence<TSource> =
         asSequence().except(second)
 
-fun <T> Array<T>.except(second: Array<T>): Sequence<T> =
+fun <TSource> Array<TSource>.except(second: Array<TSource>): Sequence<TSource> =
         asSequence().plus(second).distinct()
 
 fun <K, V> Array<Map.Entry<K, V>>.except(second: Map<K, V>): Sequence<Map.Entry<K, V>> =

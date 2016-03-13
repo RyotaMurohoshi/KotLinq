@@ -1,39 +1,39 @@
 package com.muhron.kotlinq
 
 // for Sequence.
-fun <T> Sequence<T>.union(second: Sequence<T>): Sequence<T> =
+fun <TSource> Sequence<TSource>.union(second: Sequence<TSource>): Sequence<TSource> =
         plus(second).distinct()
 
-fun <T> Sequence<T>.union(second: Iterable<T>): Sequence<T> =
+fun <TSource> Sequence<TSource>.union(second: Iterable<TSource>): Sequence<TSource> =
         plus(second).distinct()
 
-fun <T> Sequence<T>.union(second: Array<T>): Sequence<T> =
+fun <TSource> Sequence<TSource>.union(second: Array<TSource>): Sequence<TSource> =
         plus(second).distinct()
 
 fun <K, V> Sequence<Map.Entry<K, V>>.union(second: Map<K, V>): Sequence<Map.Entry<K, V>> =
         plus(second.asSequence()).distinct()
 
 // for Iterable
-fun <T> Iterable<T>.union(second: Sequence<T>): Sequence<T> =
+fun <TSource> Iterable<TSource>.union(second: Sequence<TSource>): Sequence<TSource> =
         asSequence().union(second)
 
-fun <T> Iterable<T>.union(second: Iterable<T>): Sequence<T> =
+fun <TSource> Iterable<TSource>.union(second: Iterable<TSource>): Sequence<TSource> =
         asSequence().union(second)
 
-fun <T> Iterable<T>.union(second: Array<T>): Sequence<T> =
+fun <TSource> Iterable<TSource>.union(second: Array<TSource>): Sequence<TSource> =
         asSequence().union(second)
 
 fun <K, V> Iterable<Map.Entry<K, V>>.union(second: Map<K, V>): Sequence<Map.Entry<K, V>> =
         asSequence().union(second)
 
 // for Array
-fun <T> Array<T>.union(second: Sequence<T>): Sequence<T> =
+fun <TSource> Array<TSource>.union(second: Sequence<TSource>): Sequence<TSource> =
         asSequence().union(second)
 
-fun <T> Array<T>.union(second: Iterable<T>): Sequence<T> =
+fun <TSource> Array<TSource>.union(second: Iterable<TSource>): Sequence<TSource> =
         asSequence().union(second)
 
-fun <T> Array<T>.union(second: Array<T>): Sequence<T> =
+fun <TSource> Array<TSource>.union(second: Array<TSource>): Sequence<TSource> =
         asSequence().plus(second).distinct()
 
 fun <K, V> Array<Map.Entry<K, V>>.union(second: Map<K, V>): Sequence<Map.Entry<K, V>> =

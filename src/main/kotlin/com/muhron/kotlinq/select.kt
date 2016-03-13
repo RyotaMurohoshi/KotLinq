@@ -1,13 +1,13 @@
 package com.muhron.kotlinq
 
-fun <T, R> Sequence<T>.select(selector: (T) -> R): Sequence<R> =
+fun <TSource, TResult> Sequence<TSource>.select(selector: (TSource) -> TResult): Sequence<TResult> =
         map(selector)
 
-fun <T, R> Iterable<T>.select(selector: (T) -> R): Sequence<R> =
+fun <TSource, TResult> Iterable<TSource>.select(selector: (TSource) -> TResult): Sequence<TResult> =
         asSequence().select(selector)
 
-fun <K, V, R> Map<K, V>.select(selector: (Map.Entry<K, V>) -> R): Sequence<R> =
+fun <K, V, TResult> Map<K, V>.select(selector: (Map.Entry<K, V>) -> TResult): Sequence<TResult> =
         asSequence().select(selector)
 
-fun <T, R> Array<T>.select(selector: (T) -> R): Sequence<R> =
+fun <TSource, TResult> Array<TSource>.select(selector: (TSource) -> TResult): Sequence<TResult> =
         asSequence().select(selector)
