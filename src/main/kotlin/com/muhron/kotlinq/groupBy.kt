@@ -1,29 +1,29 @@
 package com.muhron.kotlinq
 
 // only key selector
-fun <TSource, TKey> Sequence<TSource>.groupBy(keySelector: (TSource) -> TKey): Sequence<IGrouping<TKey, TSource>> =
+fun <TSource, TKey> Sequence<TSource>.groupBy(keySelector: (TSource) -> TKey): Sequence<Grouping<TKey, TSource>> =
         Sequence { toLookup(keySelector).iterator() }
 
-fun <TSource, TKey> Iterable<TSource>.groupBy(keySelector: (TSource) -> TKey): Sequence<IGrouping<TKey, TSource>> =
+fun <TSource, TKey> Iterable<TSource>.groupBy(keySelector: (TSource) -> TKey): Sequence<Grouping<TKey, TSource>> =
         asSequence().groupBy(keySelector)
 
-fun <TSource, TKey> Array<TSource>.groupBy(keySelector: (TSource) -> TKey): Sequence<IGrouping<TKey, TSource>> =
+fun <TSource, TKey> Array<TSource>.groupBy(keySelector: (TSource) -> TKey): Sequence<Grouping<TKey, TSource>> =
         asSequence().groupBy(keySelector)
 
-fun <K, V, TKey> Map<K, V>.groupBy(keySelector: (Map.Entry<K, V>) -> TKey): Sequence<IGrouping<TKey, Map.Entry<K, V>>> =
+fun <K, V, TKey> Map<K, V>.groupBy(keySelector: (Map.Entry<K, V>) -> TKey): Sequence<Grouping<TKey, Map.Entry<K, V>>> =
         asSequence().groupBy(keySelector)
 
 // key selector and element selector
-fun <TSource, TKey, TElement> Sequence<TSource>.groupBy(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Sequence<IGrouping<TKey, TElement>> =
+fun <TSource, TKey, TElement> Sequence<TSource>.groupBy(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Sequence<Grouping<TKey, TElement>> =
         Sequence { toLookup(keySelector, elementSelector).iterator() }
 
-fun <TSource, TKey, TElement> Iterable<TSource>.groupBy(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Sequence<IGrouping<TKey, TElement>> =
+fun <TSource, TKey, TElement> Iterable<TSource>.groupBy(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Sequence<Grouping<TKey, TElement>> =
         Sequence { toLookup(keySelector, elementSelector).iterator() }
 
-fun <TSource, TKey, TElement> Array<TSource>.groupBy(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Sequence<IGrouping<TKey, TElement>> =
+fun <TSource, TKey, TElement> Array<TSource>.groupBy(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Sequence<Grouping<TKey, TElement>> =
         Sequence { toLookup(keySelector, elementSelector).iterator() }
 
-fun <K, V, TKey, TElement> Map<K, V>.groupBy(keySelector: (Map.Entry<K, V>) -> TKey, elementSelector: (Map.Entry<K, V>) -> TElement): Sequence<IGrouping<TKey, TElement>> =
+fun <K, V, TKey, TElement> Map<K, V>.groupBy(keySelector: (Map.Entry<K, V>) -> TKey, elementSelector: (Map.Entry<K, V>) -> TElement): Sequence<Grouping<TKey, TElement>> =
         asSequence().groupBy(keySelector, elementSelector)
 
 // key selector and result selector
