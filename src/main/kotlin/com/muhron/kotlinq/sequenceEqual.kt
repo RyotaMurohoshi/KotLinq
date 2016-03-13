@@ -1,6 +1,5 @@
 package com.muhron.kotlinq
 
-
 fun <T> Sequence<T>.sequenceEqual(second: Sequence<T>): Boolean {
     if (this === second) {
         return true

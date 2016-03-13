@@ -2,13 +2,13 @@ package com.muhron.kotlinq
 
 // Sequence has distinct method.
 
-// Iterable<T> and Array<T> have distinct method in kotlin.collections, but their return type are not Sequence<T>.
+// Iterable<TSource> and Array<TSource> have distinct method in kotlin.collections, but their return type are not Sequence<TSource>.
 // KotLinq redefines distinct methods..
-fun <T> Iterable<T>.distinct(): Sequence<T> =
+inline fun <TSource> Iterable<TSource>.distinct(): Sequence<TSource> =
         asSequence().distinct()
 
-fun <K, V> Map<K, V>.distinct(): Sequence<Map.Entry<K, V>> =
+inline fun <K, V> Map<K, V>.distinct(): Sequence<Map.Entry<K, V>> =
         asSequence().distinct()
 
-fun <T> Array<T>.distinct(): Sequence<T> =
+inline fun <TSource> Array<TSource>.distinct(): Sequence<TSource> =
         asSequence().distinct()

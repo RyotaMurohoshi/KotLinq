@@ -1,13 +1,13 @@
 package com.muhron.kotlinq
 
-fun <T> Sequence<T>.whereWithIndex(predicate: (T, Int) -> Boolean): Sequence<T> =
+fun <TSource> Sequence<TSource>.whereWithIndex(predicate: (TSource, Int) -> Boolean): Sequence<TSource> =
         filterIndexed { i, t -> predicate(t, i) }
 
-fun <T> Iterable<T>.whereWithIndex(predicate: (T, Int) -> Boolean): Sequence<T> =
+fun <TSource> Iterable<TSource>.whereWithIndex(predicate: (TSource, Int) -> Boolean): Sequence<TSource> =
         asSequence().whereWithIndex(predicate)
 
 fun <K, V> Map<K, V>.whereWithIndex(predicate: (Map.Entry<K, V>, Int) -> Boolean): Sequence<Map.Entry<K, V>> =
         asSequence().whereWithIndex(predicate)
 
-fun <T> Array<T>.whereWithIndex(predicate: (T, Int) -> Boolean): Sequence<T> =
+fun <TSource> Array<TSource>.whereWithIndex(predicate: (TSource, Int) -> Boolean): Sequence<TSource> =
         asSequence().whereWithIndex(predicate)

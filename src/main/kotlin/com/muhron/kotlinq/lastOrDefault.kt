@@ -1,27 +1,27 @@
 package com.muhron.kotlinq
 
 // lastOrDefault
-fun <T> Sequence<T>.lastOrDefault(): T? =
+inline fun <TSource> Sequence<TSource>.lastOrDefault(): TSource? =
         lastOrNull()
 
-fun <T> Iterable<T>.lastOrDefault(): T? =
+inline fun <TSource> Iterable<TSource>.lastOrDefault(): TSource? =
         lastOrNull()
 
-fun <K, V> Map<K, V>.lastOrDefault(): Map.Entry<K, V>? =
+inline fun <K, V> Map<K, V>.lastOrDefault(): Map.Entry<K, V>? =
         asSequence().lastOrNull()
 
-fun <T> Array<T>.lastOrDefault(): T? =
+inline fun <TSource> Array<TSource>.lastOrDefault(): TSource? =
         lastOrNull()
 
 // lastOrDefault with predicate
-fun <T> Sequence<T>.lastOrDefault(predicate: (T) -> Boolean): T? =
+inline fun <TSource> Sequence<TSource>.lastOrDefault(predicate: (TSource) -> Boolean): TSource? =
         lastOrNull(predicate)
 
-fun <T> Iterable<T>.lastOrDefault(predicate: (T) -> Boolean): T? =
+inline fun <TSource> Iterable<TSource>.lastOrDefault(predicate: (TSource) -> Boolean): TSource? =
         lastOrNull(predicate)
 
-fun <K, V> Map<K, V>.lastOrDefault(predicate: (Map.Entry<K, V>) -> Boolean): Map.Entry<K, V>? =
+inline fun <K, V> Map<K, V>.lastOrDefault(predicate: (Map.Entry<K, V>) -> Boolean): Map.Entry<K, V>? =
         asSequence().lastOrNull(predicate)
 
-fun <T> Array<T>.lastOrDefault(predicate: (T) -> Boolean): T? =
+inline fun <TSource> Array<TSource>.lastOrDefault(predicate: (TSource) -> Boolean): TSource? =
         lastOrNull(predicate)

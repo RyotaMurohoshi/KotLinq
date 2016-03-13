@@ -1,13 +1,13 @@
 package com.muhron.kotlinq
 
-fun <T> Sequence<T>.skipWhile(predicate: (T) -> Boolean): Sequence<T> =
+fun <TSource> Sequence<TSource>.skipWhile(predicate: (TSource) -> Boolean): Sequence<TSource> =
         dropWhile(predicate)
 
-fun <T> Iterable<T>.skipWhile(predicate: (T) -> Boolean): Sequence<T> =
+fun <TSource> Iterable<TSource>.skipWhile(predicate: (TSource) -> Boolean): Sequence<TSource> =
         asSequence().skipWhile(predicate)
 
 fun <K, V> Map<K, V>.skipWhile(predicate: (Map.Entry<K, V>) -> Boolean): Sequence<Map.Entry<K, V>> =
         asSequence().skipWhile(predicate)
 
-fun <T> Array<T>.skipWhile(predicate: (T) -> Boolean): Sequence<T> =
+fun <TSource> Array<TSource>.skipWhile(predicate: (TSource) -> Boolean): Sequence<TSource> =
         asSequence().skipWhile(predicate)

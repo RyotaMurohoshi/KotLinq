@@ -1,14 +1,14 @@
 package com.muhron.kotlinq
 
 // elementAtOrDefault
-fun <T> Sequence<T>.elementAtOrDefault(index: Int): T? =
+inline fun <TSource> Sequence<TSource>.elementAtOrDefault(index: Int): TSource? =
         elementAtOrNull(index)
 
-fun <T> Iterable<T>.elementAtOrDefault(index: Int): T? =
+inline fun <TSource> Iterable<TSource>.elementAtOrDefault(index: Int): TSource? =
         elementAtOrNull(index)
 
-fun <K, V> Map<K, V>.elementAtOrDefault(index: Int): Map.Entry<K, V>? =
+inline fun <K, V> Map<K, V>.elementAtOrDefault(index: Int): Map.Entry<K, V>? =
         asSequence().elementAtOrNull(index)
 
-fun <T> Array<T>.elementAtOrDefault(index: Int): T? =
+inline fun <TSource> Array<TSource>.elementAtOrDefault(index: Int): TSource? =
         elementAtOrNull(index)

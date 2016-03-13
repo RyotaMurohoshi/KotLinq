@@ -1,3 +1,3 @@
 package com.muhron.kotlinq
 
-fun<T> empty(): Sequence<T> = emptySequence()
+inline fun<TResult> empty(): Sequence<TResult> = emptySequence()

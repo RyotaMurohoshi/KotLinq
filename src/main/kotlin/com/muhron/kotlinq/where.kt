@@ -1,14 +1,14 @@
 package com.muhron.kotlinq
 
-fun <T> Sequence<T>.where(predicate: (T) -> Boolean): Sequence<T> =
+fun <TSource> Sequence<TSource>.where(predicate: (TSource) -> Boolean): Sequence<TSource> =
         filter(predicate)
 
-fun <T> Iterable<T>.where(predicate: (T) -> Boolean): Sequence<T> =
+fun <TSource> Iterable<TSource>.where(predicate: (TSource) -> Boolean): Sequence<TSource> =
         asSequence().filter(predicate)
 
 fun <K, V> Map<K, V>.where(predicate: (Map.Entry<K, V>) -> Boolean): Sequence<Map.Entry<K, V>> =
         asSequence().where(predicate)
 
-fun <T> Array<T>.where(predicate: (T) -> Boolean): Sequence<T> =
+fun <TSource> Array<TSource>.where(predicate: (TSource) -> Boolean): Sequence<TSource> =
         asSequence().filter(predicate)
 
