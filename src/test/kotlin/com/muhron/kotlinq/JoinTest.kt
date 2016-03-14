@@ -93,6 +93,5 @@ class JoinTest {
 
     fun exceptionSequence(): Sequence<Int> = Sequence {
         throw Exception()
-        emptyList<Int>().iterator()
     }
 }
