@@ -34,7 +34,7 @@ inline fun <TSource> Array<TSource>.union(second: Iterable<TSource>): Sequence<T
         asSequence().union(second)
 
 inline fun <TSource> Array<TSource>.union(second: Array<TSource>): Sequence<TSource> =
-        asSequence().plus(second).distinct()
+        asSequence().union(second)
 
 inline fun <K, V> Array<Map.Entry<K, V>>.union(second: Map<K, V>): Sequence<Map.Entry<K, V>> =
         asSequence().union(second)
