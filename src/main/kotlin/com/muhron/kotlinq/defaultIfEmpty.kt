@@ -30,3 +30,6 @@ inline fun <TSource> Array<TSource?>.defaultIfEmpty(): Sequence<TSource?> =
 
 inline fun <TSource> Iterable<TSource?>.defaultIfEmpty(): Sequence<TSource?> =
         asSequence().defaultIfEmpty()
+
+inline fun <K, V> Map<K, V>.defaultIfEmpty(): Sequence<Map.Entry<K, V>?> =
+        asSequence().defaultIfEmpty()
