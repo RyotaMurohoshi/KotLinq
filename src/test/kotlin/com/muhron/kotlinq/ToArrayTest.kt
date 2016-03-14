@@ -8,6 +8,6 @@ class ToArrayTest {
     @Test
     fun simple0() {
         val result = sequenceOf(1, 2, 3).toArray()
-        Assert.assertEquals(result, arrayOf(1, 2, 3));
+        Assert.assertArrayEquals(result, arrayOf(1, 2, 3))
     }
 }

@@ -18,10 +18,10 @@ fun <TSource, TKey, TElement> Sequence<TSource>.groupBy(keySelector: (TSource) -
         Sequence { toLookup(keySelector, elementSelector).iterator() }
 
 fun <TSource, TKey, TElement> Iterable<TSource>.groupBy(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Sequence<Grouping<TKey, TElement>> =
-        Sequence { toLookup(keySelector, elementSelector).iterator() }
+        asSequence().groupBy(keySelector, elementSelector)
 
 fun <TSource, TKey, TElement> Array<TSource>.groupBy(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Sequence<Grouping<TKey, TElement>> =
-        Sequence { toLookup(keySelector, elementSelector).iterator() }
+        asSequence().groupBy(keySelector, elementSelector)
 
 fun <K, V, TKey, TElement> Map<K, V>.groupBy(keySelector: (Map.Entry<K, V>) -> TKey, elementSelector: (Map.Entry<K, V>) -> TElement): Sequence<Grouping<TKey, TElement>> =
         asSequence().groupBy(keySelector, elementSelector)

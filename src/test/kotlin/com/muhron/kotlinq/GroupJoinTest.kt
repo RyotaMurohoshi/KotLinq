@@ -103,6 +103,5 @@ class GroupJoinTest {
 
     fun exceptionSequence(): Sequence<Int> = Sequence {
         throw Exception()
-        emptyList<Int>().iterator()
     }
 }
