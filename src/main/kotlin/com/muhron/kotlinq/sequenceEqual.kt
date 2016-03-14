@@ -40,37 +40,37 @@ fun <K, V> Sequence<Map.Entry<K, V>>.sequenceEqual(second: Map<K, V>): Boolean =
 
 
 fun <T> Iterable<T>.sequenceEqual(second: Sequence<T>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <T> Iterable<T>.sequenceEqual(second: Iterable<T>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <T> Iterable<T>.sequenceEqual(second: Array<T>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <K, V> Iterable<Map.Entry<K, V>>.sequenceEqual(second: Map<K, V>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <T> Array<T>.sequenceEqual(second: Sequence<T>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <T> Array<T>.sequenceEqual(second: Iterable<T>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <T> Array<T>.sequenceEqual(second: Array<T>): Boolean =
         sequenceEqual(second.asSequence())
 
 fun <K, V> Array<Map.Entry<K, V>>.sequenceEqual(second: Map<K, V>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <K, V> Map<K, V>.sequenceEqual(second: Sequence<Map.Entry<K, V>>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <K, V> Map<K, V>.sequenceEqual(second: Iterable<Map.Entry<K, V>>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <K, V> Map<K, V>.sequenceEqual(second: Array<Map.Entry<K, V>>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
 
 fun <K, V> Map<K, V>.sequenceEqual(second: Map<K, V>): Boolean =
-        sequenceEqual(second.asSequence())
+        asSequence().sequenceEqual(second.asSequence())
