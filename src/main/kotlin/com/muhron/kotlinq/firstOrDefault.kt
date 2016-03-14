@@ -1,16 +1,16 @@
 package com.muhron.kotlinq
 
 // firstOrDefault
-inline fun <TSource> Sequence<TSource>.firstOrDefault(): TSource? =
+fun <TSource> Sequence<TSource>.firstOrDefault(): TSource? =
         firstOrNull()
 
-inline fun <TSource> Iterable<TSource>.firstOrDefault(): TSource? =
+fun <TSource> Iterable<TSource>.firstOrDefault(): TSource? =
         asSequence().firstOrDefault()
 
-inline fun <K, V> Map<K, V>.firstOrDefault(): Map.Entry<K, V>? =
+fun <K, V> Map<K, V>.firstOrDefault(): Map.Entry<K, V>? =
         asSequence().firstOrDefault()
 
-inline fun <TSource> Array<TSource>.firstOrDefault(): TSource? =
+fun <TSource> Array<TSource>.firstOrDefault(): TSource? =
         asSequence().firstOrDefault()
 
 // firstOrDefault with predicate
