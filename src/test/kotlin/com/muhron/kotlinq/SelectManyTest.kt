@@ -34,4 +34,10 @@ class SelectManyTest {
                 2 to 2, 2 to 2,
                 3 to 3, 3 to 3, 3 to 3));
     }
+
+    @Test
+    fun testNoThrownException() {
+        exceptionSequence<Int>().selectMany { it -> sequenceOf(it) }
+        exceptionSequence<Int>().selectMany { it, index -> sequenceOf(it) }
+    }
 }

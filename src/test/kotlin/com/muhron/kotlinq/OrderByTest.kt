@@ -2,6 +2,7 @@ package com.muhron.kotlinq
 
 import org.junit.Assert
 import org.junit.Test
+import java.util.*
 
 class OrderByTest {
 
@@ -29,5 +30,18 @@ class OrderByTest {
     fun test3() {
         val result = list.orderBy { it.length }.thenByDescending { it }.toList()
         Assert.assertEquals(result, listOf("Java", "Gosu", "Xtend", "Scala", "Kotlin", "Groovy", "Ceylon", "Clojure"))
+    }
+
+    @Test
+    fun testNoThrownException() {
+        exceptionSequence<Int>().orderBy { it }
+        exceptionSequence<Int>().orderByDescending { it }
+        exceptionSequence<Int>().orderBy { it }.thenBy { it }
+        exceptionSequence<Int>().orderBy { it }.thenByDescending { it }
+
+        exceptionSequence<Int>().orderBy({ it }, Comparator.naturalOrder<Int>())
+        exceptionSequence<Int>().orderByDescending ({ it }, Comparator.naturalOrder<Int>())
+        exceptionSequence<Int>().orderBy { it }.thenBy({ it }, Comparator.naturalOrder<Int>())
+        exceptionSequence<Int>().orderBy { it }.thenByDescending({ it }, Comparator.naturalOrder<Int>())
     }
 }

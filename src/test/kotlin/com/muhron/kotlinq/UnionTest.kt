@@ -37,4 +37,11 @@ class UnionTest {
                 emptyList<Int>()
         )
     }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().union(sequenceOf(1, 2, 3))
+        exceptionSequence<Int>().union(exceptionSequence())
+        sequenceOf(1, 2, 3).union(exceptionSequence())
+    }
 }

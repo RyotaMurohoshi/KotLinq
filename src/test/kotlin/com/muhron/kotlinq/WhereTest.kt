@@ -6,8 +6,13 @@ import org.junit.Test
 class WhereTest {
 
     @Test
-    fun test(){
+    fun test() {
         val result = sequenceOf(1, 2, 3, 4, 5).where { it % 2 == 0 }.toList()
         Assert.assertEquals(result, listOf(2, 4));
+    }
+
+    @Test
+    fun testNoThrownException() {
+        exceptionSequence<Int>().where { true }
     }
 }

@@ -10,4 +10,14 @@ class ConcatTest {
 
         Assert.assertEquals(result, listOf(1, 2, 3, 4, 5, 6))
     }
+
+    @Test
+    fun testNoThrownException0() {
+        exceptionSequence<Int>().concat(sequenceOf(1, 2, 3))
+    }
+
+    @Test
+    fun testNoThrownException1() {
+        sequenceOf(1, 2, 3).concat(exceptionSequence<Int>())
+    }
 }

@@ -34,3 +34,5 @@ class Sub : Super()
 
 class A
 class B
+
+fun <T> exceptionSequence(): Sequence<T> = Sequence<T> { throw Exception() }

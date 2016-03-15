@@ -104,4 +104,11 @@ class GroupJoinTest {
     fun exceptionSequence(): Sequence<Int> = Sequence {
         throw Exception()
     }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().groupJoin(sequenceOf(1, 2, 3), { it }, { it }, { i, o -> i })
+        exceptionSequence<Int>().groupJoin(exceptionSequence(), { it }, { it }, { i, o -> i })
+        sequenceOf(1, 2, 3).groupJoin(exceptionSequence(), { it }, { it }, { i, o -> i })
+    }
 }

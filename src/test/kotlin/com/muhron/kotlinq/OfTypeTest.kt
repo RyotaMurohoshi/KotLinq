@@ -84,4 +84,9 @@ class OfTypeTest {
                 listOf(b0, b1, b2)
         )
     }
+
+    @Test
+    fun testNoThrownException() {
+        exceptionSequence<Int>().ofType<Any>()
+    }
 }

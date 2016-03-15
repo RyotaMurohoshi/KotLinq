@@ -22,4 +22,9 @@ class DistinctTest {
                 emptyList<Int>()
         )
     }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().distinct()
+    }
 }

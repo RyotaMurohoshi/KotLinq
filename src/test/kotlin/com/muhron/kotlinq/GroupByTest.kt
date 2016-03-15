@@ -59,4 +59,12 @@ class GroupByTest {
         Assert.assertEquals(result.size, 5);
         Assert.assertEquals(result, listOf("1, 1, 1", "2, 2", "3, 3", "4", "5"))
     }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().groupBy(keySelector = { it })
+        exceptionSequence<Int>().groupBy(keySelector = { it }, resultSelector = { key, sequences -> key })
+        exceptionSequence<Int>().groupBy(keySelector = { it }, elementSelector = { it })
+        exceptionSequence<Int>().groupBy(keySelector = { it }, elementSelector = { it }, resultSelector = { key, sequences -> key })
+    }
 }

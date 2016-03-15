@@ -37,4 +37,11 @@ class IntersectTest {
                 emptyList<Int>()
         )
     }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().intersect(sequenceOf(1, 2, 3))
+        exceptionSequence<Int>().intersect(exceptionSequence())
+        sequenceOf(1, 2, 3).intersect(exceptionSequence())
+    }
 }

@@ -114,4 +114,9 @@ class CastTest {
                 listOf(b0, b1, b2)
         )
     }
+
+    @Test
+    fun testNoThrownException() {
+        exceptionSequence<Int>().cast<Any>()
+    }
 }

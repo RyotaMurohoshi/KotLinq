@@ -37,4 +37,11 @@ class ExceptTest {
                 emptyList<Int>()
         )
     }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().except(sequenceOf(1, 2, 3))
+        exceptionSequence<Int>().except(exceptionSequence())
+        sequenceOf(1, 2, 3).except(exceptionSequence())
+    }
 }
