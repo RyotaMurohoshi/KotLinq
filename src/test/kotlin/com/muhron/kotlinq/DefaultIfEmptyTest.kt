@@ -5,25 +5,25 @@ import org.junit.Test
 
 class DefaultIfEmptyTest {
     @Test
-    fun simple0() {
+    fun test0() {
         val result = sequenceOf(1, 2, 3).defaultIfEmpty(0).toList()
         Assert.assertEquals(result, listOf(1, 2, 3))
     }
 
     @Test
-    fun simple1() {
+    fun test1() {
         val result = emptySequence<Int>().defaultIfEmpty(0).toList()
         Assert.assertEquals(result, listOf(0))
     }
 
     @Test
-    fun simple2() {
+    fun test2() {
         val result = sequenceOf(1, 2, 3).defaultIfEmpty().toList()
         Assert.assertEquals(result, listOf(1, 2, 3))
     }
 
     @Test
-    fun simple3() {
+    fun test3() {
         val result = emptySequence<Int?>().defaultIfEmpty().toList()
         Assert.assertEquals(result, listOf(null))
     }

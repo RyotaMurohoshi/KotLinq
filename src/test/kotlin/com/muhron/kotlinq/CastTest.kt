@@ -26,7 +26,7 @@ class CastTest {
     }
 
     @Test
-    fun simple() {
+    fun test() {
         val super0 = Super()
         val super1 = Super()
         val super2 = Super()
@@ -76,7 +76,7 @@ class CastTest {
     }
 
     @Test
-    fun simpleB() {
+    fun testB() {
         val a0 = A()
         val a1 = A()
         val a2 = A()
@@ -96,7 +96,7 @@ class CastTest {
     }
 
     @Test
-    fun simpleTakeWith() {
+    fun testTakeWith() {
         val a0 = A()
         val a1 = A()
         val a2 = A()

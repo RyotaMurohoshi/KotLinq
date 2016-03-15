@@ -5,19 +5,19 @@ import org.junit.Test
 
 class ElementAtOrDefaultTest {
     @Test
-    fun simple0() {
+    fun test0() {
         val result = sequenceOf(1, 2, 3).elementAtOrDefault(0)
         Assert.assertEquals(result, 1)
     }
 
     @Test
-    fun simple1() {
+    fun test1() {
         val result = sequenceOf(1, 2, 3).elementAtOrDefault(3)
         Assert.assertEquals(result, null)
     }
 
     @Test
-    fun simple2() {
+    fun test2() {
         val result =  emptySequence<Int>().elementAtOrDefault(0)
         Assert.assertEquals(result, null)
     }

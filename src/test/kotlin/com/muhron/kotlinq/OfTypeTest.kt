@@ -6,7 +6,7 @@ import org.junit.Test
 class OfTypeTest {
 
     @Test
-    fun simple() {
+    fun test() {
         val super0 = Super()
         val super1 = Super()
         val super2 = Super()
@@ -46,7 +46,7 @@ class OfTypeTest {
     }
 
     @Test
-    fun simpleB() {
+    fun testB() {
         val a0 = A()
         val a1 = A()
         val a2 = A()

@@ -6,7 +6,7 @@ import org.junit.Test
 class DistinctTest {
 
     @Test
-    fun simple() {
+    fun test() {
         Assert.assertEquals(
                 sequenceOf(1, 2, 3, 4, 5).distinct().toList(),
                 listOf(1, 2, 3, 4, 5)

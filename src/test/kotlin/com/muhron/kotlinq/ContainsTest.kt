@@ -5,21 +5,21 @@ import org.junit.Test
 
 class ContainsTest {
     @Test
-    fun simple0() {
+    fun test0() {
         val result = sequenceOf(1, 2, 3).contains(1)
 
         Assert.assertTrue(result)
     }
 
     @Test
-    fun simple1() {
+    fun test1() {
         val result = sequenceOf(1, 2, 3).contains(4)
 
         Assert.assertFalse(result)
     }
 
     @Test
-    fun simple2() {
+    fun test2() {
         val result = emptySequence<Int>().contains(4)
 
         Assert.assertFalse(result)

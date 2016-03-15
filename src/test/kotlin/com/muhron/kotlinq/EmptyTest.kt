@@ -5,7 +5,7 @@ import org.junit.Test
 
 class EmptyTest {
     @Test
-    fun simple() {
+    fun test() {
         Assert.assertEquals(empty<Int>(), emptySequence<Int>())
     }
 }

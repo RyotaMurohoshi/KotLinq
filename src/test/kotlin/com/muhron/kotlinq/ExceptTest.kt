@@ -6,7 +6,7 @@ import org.junit.Test
 class ExceptTest {
 
     @Test
-    fun simple() {
+    fun test() {
         Assert.assertEquals(
                 sequenceOf(1, 2, 3, 4, 5).except(sequenceOf(1, 2, 3, 4, 5)).toList(),
                 listOf<Int>()

@@ -6,7 +6,7 @@ import org.junit.Test
 class IntersectTest {
 
     @Test
-    fun simple() {
+    fun test() {
         Assert.assertEquals(
                 sequenceOf(1, 2, 3, 4, 5).intersect(sequenceOf(1, 2, 3, 4, 5)).toList(),
                 listOf(1, 2, 3, 4, 5)

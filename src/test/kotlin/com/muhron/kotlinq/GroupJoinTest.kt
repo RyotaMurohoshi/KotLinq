@@ -6,7 +6,7 @@ import org.junit.Test
 class GroupJoinTest {
 
     @Test
-    fun simpleUnitsGroupJoinPersons() {
+    fun testUnitsGroupJoinPersons() {
         val actual: List<UnitViewModel> = units.groupJoin(
                 persons.asSequence(),
                 { unit -> unit.id },
@@ -38,7 +38,7 @@ class GroupJoinTest {
     }
 
     @Test
-    fun simplePersonsGroupJoinUnits() {
+    fun testPersonsGroupJoinUnits() {
         val actual: List<PersonViewModel> = persons.groupJoin(
                 units.asSequence(),
                 { person -> person.unitsId },

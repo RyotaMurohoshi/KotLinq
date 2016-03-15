@@ -6,25 +6,25 @@ import org.junit.Test
 class FirstOrDefaultTest {
 
     @Test
-    fun simple0() {
+    fun test0() {
         val result = sequenceOf(1, 2, 3, 4, 5).firstOrDefault()
         Assert.assertEquals(result, 1)
     }
 
     @Test
-    fun simple1() {
+    fun test1() {
         val result = emptySequence<Int>().firstOrDefault()
         Assert.assertEquals(result, null)
     }
 
     @Test
-    fun simple2() {
+    fun test2() {
         val result = sequenceOf(1, 2, 3, 4, 5).firstOrDefault { it > 3 }
         Assert.assertEquals(result, 4);
     }
 
     @Test
-    fun simple3() {
+    fun test3() {
         val result = sequenceOf(1, 2, 3, 4, 5).firstOrDefault { it > 5 }
         Assert.assertEquals(result, null)
     }

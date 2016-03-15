@@ -7,24 +7,24 @@ import java.util.*
 class LastTest {
 
     @Test
-    fun simple0() {
+    fun test0() {
         val result = sequenceOf(1, 2, 3, 4, 5).last()
         Assert.assertEquals(result, 5)
     }
 
     @Test(expected = NoSuchElementException::class)
-    fun simple1() {
+    fun test1() {
         emptySequence<Int>().last()
     }
 
     @Test
-    fun simple2() {
+    fun test2() {
         val result = sequenceOf(1, 2, 3, 4, 5).last{it > 3}
         Assert.assertEquals(result, 5);
     }
 
     @Test(expected = NoSuchElementException::class)
-    fun simple3() {
+    fun test3() {
         emptySequence<Int>().last{ it > 3}
     }
 }

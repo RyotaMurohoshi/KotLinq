@@ -6,7 +6,7 @@ import org.junit.Test
 class ToLookupTest {
 
     @Test
-    fun simpleA() {
+    fun testA() {
         val result = sequenceOf(1, 2, 3, 4, 5, 1, 2, 3, 1).toLookup { it }
         Assert.assertEquals(result.count, 5);
         Assert.assertEquals(result[1].toList(), listOf(1, 1, 1));
@@ -29,7 +29,7 @@ class ToLookupTest {
     }
 
     @Test
-    fun simpleB() {
+    fun testB() {
         val result = sequenceOf(1, 2, 3, 4, 5, 1, 2, 3, 1).toLookup ({ it }, { it.toString() })
 
         Assert.assertEquals(result.count, 5);
