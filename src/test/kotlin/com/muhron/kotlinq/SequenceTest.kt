@@ -5,33 +5,33 @@ import org.junit.Test
 
 class SequenceTest {
     @Test
-    fun simple0() {
+    fun test0() {
         println(sequenceOf(1, 2, 3, 4, 5).sequenceEqual(sequenceOf(1, 2, 3, 4, 5)))
         Assert.assertTrue(sequenceOf(1, 2, 3, 4, 5).sequenceEqual(sequenceOf(1, 2, 3, 4, 5)))
     }
 
     @Test
-    fun simple1() {
+    fun test1() {
         Assert.assertFalse(sequenceOf(1, 2, 3, 4, 5).sequenceEqual(sequenceOf(1, 2, 3, 4)))
     }
 
     @Test
-    fun simple2() {
+    fun test2() {
         Assert.assertFalse(sequenceOf(1, 2, 3, 4, 5).sequenceEqual(emptySequence()))
     }
 
     @Test
-    fun simple3() {
+    fun test3() {
         Assert.assertFalse(emptySequence<Int>().sequenceEqual(sequenceOf(1, 2, 3, 4, 5)))
     }
 
     @Test
-    fun simple4() {
+    fun test4() {
         Assert.assertTrue(emptySequence<Int>().sequenceEqual(emptySequence()))
     }
 
     @Test
-    fun simple5() {
+    fun test5() {
         Assert.assertFalse(sequenceOf(1, 2, 3, 4, 5).sequenceEqual(sequenceOf(3, 1, 2, 3, 4)))
     }
 }

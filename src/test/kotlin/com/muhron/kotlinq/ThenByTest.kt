@@ -6,7 +6,7 @@ import org.junit.Test
 class ThenByTest {
 
     @Test
-    fun simple() {
+    fun test() {
         val result = sequenceOf("Java", "Ceylon", "Xtend", "JRuby", "Kotlin", "Jython", "Groovy", "Scala", "Gosu")
                 .orderBy { it -> it.length }
                 .thenBy { it }

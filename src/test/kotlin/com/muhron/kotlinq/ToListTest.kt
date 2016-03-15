@@ -6,7 +6,7 @@ import org.junit.Test
 class ToListTest {
 
     @Test
-    fun simple0() {
+    fun test0() {
         val result = sequenceOf(1, 2, 3).toList()
         Assert.assertEquals(result, listOf(1, 2, 3));
     }

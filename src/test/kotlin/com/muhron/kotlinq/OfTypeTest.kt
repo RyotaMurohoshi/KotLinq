@@ -6,7 +6,7 @@ import org.junit.Test
 class OfTypeTest {
 
     @Test
-    fun simple() {
+    fun test() {
         val super0 = Super()
         val super1 = Super()
         val super2 = Super()
@@ -46,7 +46,7 @@ class OfTypeTest {
     }
 
     @Test
-    fun simpleB() {
+    fun testB() {
         val a0 = A()
         val a1 = A()
         val a2 = A()
@@ -83,5 +83,10 @@ class OfTypeTest {
                 sequenceOf(b0, b1, b2).ofType<B>().toList(),
                 listOf(b0, b1, b2)
         )
+    }
+
+    @Test
+    fun testNoThrownException() {
+        exceptionSequence<Int>().ofType<Any>()
     }
 }

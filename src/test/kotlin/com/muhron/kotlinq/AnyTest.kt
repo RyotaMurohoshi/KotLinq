@@ -6,31 +6,31 @@ import org.junit.Test
 class AnyTest {
 
     @Test
-    fun simple0() {
+    fun test0() {
         val result = sequenceOf(1, 2, 3).any()
         Assert.assertTrue(result)
     }
 
     @Test
-    fun simple1() {
+    fun test1() {
         val result = emptySequence<Int>().any()
         Assert.assertFalse(result)
     }
 
     @Test
-    fun simple2() {
+    fun test2() {
         val result = sequenceOf(1, 2, 3).any { it < 5 }
         Assert.assertTrue(result)
     }
 
     @Test
-    fun simple3() {
+    fun test3() {
         val result = sequenceOf(1, 2, 3).any { it > 5 }
         Assert.assertFalse(result)
     }
 
     @Test
-    fun simple4() {
+    fun test4() {
         val result = emptySequence<Int>().any { it > 5 }
         Assert.assertFalse(result)
     }

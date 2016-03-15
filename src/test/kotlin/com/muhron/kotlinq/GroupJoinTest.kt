@@ -6,7 +6,7 @@ import org.junit.Test
 class GroupJoinTest {
 
     @Test
-    fun simpleUnitsGroupJoinPersons() {
+    fun testUnitsGroupJoinPersons() {
         val actual: List<UnitViewModel> = units.groupJoin(
                 persons.asSequence(),
                 { unit -> unit.id },
@@ -38,7 +38,7 @@ class GroupJoinTest {
     }
 
     @Test
-    fun simplePersonsGroupJoinUnits() {
+    fun testPersonsGroupJoinUnits() {
         val actual: List<PersonViewModel> = persons.groupJoin(
                 units.asSequence(),
                 { person -> person.unitsId },
@@ -103,5 +103,12 @@ class GroupJoinTest {
 
     fun exceptionSequence(): Sequence<Int> = Sequence {
         throw Exception()
+    }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().groupJoin(sequenceOf(1, 2, 3), { it }, { it }, { i, o -> i })
+        exceptionSequence<Int>().groupJoin(exceptionSequence(), { it }, { it }, { i, o -> i })
+        sequenceOf(1, 2, 3).groupJoin(exceptionSequence(), { it }, { it }, { i, o -> i })
     }
 }

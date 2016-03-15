@@ -6,7 +6,7 @@ import org.junit.Test
 class ExceptTest {
 
     @Test
-    fun simple() {
+    fun test() {
         Assert.assertEquals(
                 sequenceOf(1, 2, 3, 4, 5).except(sequenceOf(1, 2, 3, 4, 5)).toList(),
                 listOf<Int>()
@@ -36,5 +36,12 @@ class ExceptTest {
                 emptySequence<Int>().except(sequenceOf()).toList(),
                 emptyList<Int>()
         )
+    }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().except(sequenceOf(1, 2, 3))
+        exceptionSequence<Int>().except(exceptionSequence())
+        sequenceOf(1, 2, 3).except(exceptionSequence())
     }
 }

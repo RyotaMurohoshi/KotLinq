@@ -6,7 +6,7 @@ import org.junit.Test
 class GroupByTest {
 
     @Test
-    fun simpleA() {
+    fun testA() {
         val result = sequenceOf(1, 2, 3, 4, 5, 1, 2, 3, 1).groupBy { it }.toList()
         Assert.assertEquals(result.size, 5);
         Assert.assertEquals(result.elementAt(0).key, 1);
@@ -22,7 +22,7 @@ class GroupByTest {
     }
 
     @Test
-    fun simpleB() {
+    fun testB() {
         val result = sequenceOf(1, 2, 3, 4, 5, 1, 2, 3, 1)
                 .groupBy(keySelector = { it }, elementSelector = { it.toString() })
                 .toList()
@@ -41,7 +41,7 @@ class GroupByTest {
     }
 
     @Test
-    fun simpleC() {
+    fun testC() {
         val result = sequenceOf(1, 2, 3, 4, 5, 1, 2, 3, 1)
                 .groupBy(keySelector = { it }, resultSelector = { key, sequences -> sequences.sum() })
                 .toList()
@@ -51,12 +51,20 @@ class GroupByTest {
     }
 
     @Test
-    fun simpleD() {
+    fun testD() {
         val result = sequenceOf(1, 2, 3, 4, 5, 1, 2, 3, 1)
                 .groupBy(keySelector = { it }, elementSelector = { it.toString() }, resultSelector = { key, sequences -> sequences.joinToString() })
                 .toList()
 
         Assert.assertEquals(result.size, 5);
         Assert.assertEquals(result, listOf("1, 1, 1", "2, 2", "3, 3", "4", "5"))
+    }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().groupBy(keySelector = { it })
+        exceptionSequence<Int>().groupBy(keySelector = { it }, resultSelector = { key, sequences -> key })
+        exceptionSequence<Int>().groupBy(keySelector = { it }, elementSelector = { it })
+        exceptionSequence<Int>().groupBy(keySelector = { it }, elementSelector = { it }, resultSelector = { key, sequences -> key })
     }
 }

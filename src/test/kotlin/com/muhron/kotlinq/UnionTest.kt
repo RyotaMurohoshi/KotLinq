@@ -6,7 +6,7 @@ import org.junit.Test
 class UnionTest {
 
     @Test
-    fun simple() {
+    fun test() {
         Assert.assertEquals(
                 sequenceOf(1, 2, 3, 4, 5).union(sequenceOf(1, 2, 3, 4, 5)).toList(),
                 listOf(1, 2, 3, 4, 5)
@@ -36,5 +36,12 @@ class UnionTest {
                 emptySequence<Int>().union(sequenceOf()).toList(),
                 emptyList<Int>()
         )
+    }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().union(sequenceOf(1, 2, 3))
+        exceptionSequence<Int>().union(exceptionSequence())
+        sequenceOf(1, 2, 3).union(exceptionSequence())
     }
 }

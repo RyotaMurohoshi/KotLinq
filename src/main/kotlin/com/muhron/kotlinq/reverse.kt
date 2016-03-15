@@ -1,13 +1,13 @@
 package com.muhron.kotlinq
 
 fun <TSource> Sequence<TSource>.reverse(): Sequence<TSource> =
-        toList().reversed().asSequence()
+        Sequence { toList().reversed().iterator() }
 
-fun <TSource> Iterable<TSource>.reverse() =
+fun <TSource> Iterable<TSource>.reverse(): Sequence<TSource> =
         asSequence().reverse()
 
-fun <TSource> Array<TSource>.reverse() =
+fun <TSource> Array<TSource>.reverse(): Sequence<TSource> =
         asSequence().reverse()
 
-fun <K, V> Map<K, V>.reverse() =
+fun <K, V> Map<K, V>.reverse(): Sequence<Map.Entry<K, V>> =
         asSequence().reverse()

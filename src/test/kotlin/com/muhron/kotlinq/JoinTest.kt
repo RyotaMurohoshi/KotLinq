@@ -6,7 +6,7 @@ import org.junit.Test
 class JoinTest {
 
     @Test
-    fun simpleUnitsJoinPersons() {
+    fun testUnitsJoinPersons() {
         val actual: List<PersonViewModel> = units.join(
                 persons.asSequence(),
                 { unit -> unit.id },
@@ -30,7 +30,7 @@ class JoinTest {
     }
 
     @Test
-    fun simplePersonsJoinUnits() {
+    fun testPersonsJoinUnits() {
         val actual: List<PersonViewModel> = persons.join(
                 units.asSequence(),
                 { person -> person.unitsId },
@@ -55,7 +55,7 @@ class JoinTest {
 
     @Test
     fun notIterateOuter() {
-        val outer = exceptionSequence()
+        val outer = exceptionSequence<Int>()
         val inner = sequenceOf(1, 2, 3, 4, 5)
 
         // no exception.
@@ -64,7 +64,7 @@ class JoinTest {
 
     @Test(expected = Exception::class)
     fun notIterateOuterCatchException() {
-        val outer = exceptionSequence()
+        val outer = exceptionSequence<Int>()
         val inner = sequenceOf(1, 2, 3, 4, 5)
 
         // throw exception with iterate.
@@ -75,7 +75,7 @@ class JoinTest {
     @Test
     fun notIterateInner() {
         val outer = sequenceOf(1, 2, 3, 4, 5)
-        val inner = exceptionSequence()
+        val inner = exceptionSequence<Int>()
 
         // no exception.
         outer.join(inner, { it }, { it }, { outer, inner -> outer * inner })
@@ -84,14 +84,17 @@ class JoinTest {
     @Test(expected = Exception::class)
     fun notIterateInnerCatchException() {
         val outer = sequenceOf(1, 2, 3, 4, 5)
-        val inner = exceptionSequence()
+        val inner = exceptionSequence<Int>()
 
         // throw exception with iterate.
         for (num in outer.join(inner, { it }, { it }, { outer, inner -> outer * inner })) {
         }
     }
 
-    fun exceptionSequence(): Sequence<Int> = Sequence {
-        throw Exception()
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().join(sequenceOf(1, 2, 3), { it }, { it }, { i, o -> i })
+        exceptionSequence<Int>().join(exceptionSequence<Int>(), { it }, { it }, { i, o -> i })
+        sequenceOf(1, 2, 3).join(exceptionSequence<Int>(), { it }, { it }, { i, o -> i })
     }
 }
