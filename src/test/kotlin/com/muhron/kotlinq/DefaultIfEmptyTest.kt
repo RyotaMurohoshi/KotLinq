@@ -27,4 +27,10 @@ class DefaultIfEmptyTest {
         val result = emptySequence<Int?>().defaultIfEmpty().toList()
         Assert.assertEquals(result, listOf(null))
     }
+
+    @Test
+    fun testNoThrownException1() {
+        exceptionSequence<Int>().defaultIfEmpty()
+        exceptionSequence<Int>().defaultIfEmpty(1)
+    }
 }

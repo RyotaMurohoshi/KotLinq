@@ -1,10 +1,12 @@
 package com.muhron.kotlinq
 
 fun <TSource> Sequence<TSource>.defaultIfEmpty(defaultValue: TSource): Sequence<TSource> {
-    if (any()) {
-        return this
-    } else {
-        return sequenceOf(defaultValue)
+    return Sequence {
+        if(any()) {
+            this.iterator()
+        } else{
+            sequenceOf(defaultValue).iterator()
+        }
     }
 }
 
@@ -18,10 +20,12 @@ fun <K, V> Map<K, V>.defaultIfEmpty(defaultValue: Map.Entry<K, V>): Sequence<Map
         asSequence().defaultIfEmpty(defaultValue)
 
 fun <TSource> Sequence<TSource?>.defaultIfEmpty(): Sequence<TSource?> {
-    if (any()) {
-        return this
-    } else {
-        return sequenceOf(null)
+    return Sequence {
+        if(any()) {
+            this.iterator()
+        } else{
+            sequenceOf(null).iterator()
+        }
     }
 }
 
