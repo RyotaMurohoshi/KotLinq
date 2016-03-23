@@ -1,4 +1,4 @@
-# KotLinq (Beta)
+# KotLinq (Beta) [![Circle CI](https://circleci.com/gh/RyotaMurohoshi/KotLinq/tree/master.svg?style=shield)](https://circleci.com/gh/RyotaMurohoshi/KotLinq/tree/master)
 
 C#のコレクション操作のための統合言語機能であるLINQ。
 KotlinにおけるLINQライクなコレクション操作APIライブラリです。
