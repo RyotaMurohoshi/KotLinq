@@ -6,7 +6,7 @@ fun <TSource> Sequence<TSource>.skip(count: Int): Sequence<TSource> =
 fun <TSource> Iterable<TSource>.skip(count: Int): Sequence<TSource> =
         asSequence().skip(count)
 
-fun <K, V> Map<K, V>.skip(count: Int): Sequence<Map.Entry<K, V>> =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.skip(count: Int): Sequence<Map.Entry<TSourceK, TSourceV>> =
         asSequence().skip(count)
 
 fun <TSource> Array<TSource>.skip(count: Int): Sequence<TSource> =

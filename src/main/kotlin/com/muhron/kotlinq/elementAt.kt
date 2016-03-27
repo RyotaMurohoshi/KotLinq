@@ -1,6 +1,6 @@
 package com.muhron.kotlinq
 
 // elementAt() methods are implemented in kotlin.collections or kotlin.sequences
-// without Map<K, V>.
+// without Map<TSourceK,  TSourceV>.
 
-fun <K, V> Map<K, V>.elementAt(index: Int): Map.Entry<K, V> = asSequence().elementAt(index)
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.elementAt(index: Int): Map.Entry<TSourceK, TSourceV> = asSequence().elementAt(index)

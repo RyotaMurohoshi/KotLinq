@@ -6,7 +6,7 @@ fun <TSource> Sequence<TSource>.whereWithIndex(predicate: (TSource, Int) -> Bool
 fun <TSource> Iterable<TSource>.whereWithIndex(predicate: (TSource, Int) -> Boolean): Sequence<TSource> =
         asSequence().whereWithIndex(predicate)
 
-fun <K, V> Map<K, V>.whereWithIndex(predicate: (Map.Entry<K, V>, Int) -> Boolean): Sequence<Map.Entry<K, V>> =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.whereWithIndex(predicate: (Map.Entry<TSourceK, TSourceV>, Int) -> Boolean): Sequence<Map.Entry<TSourceK, TSourceV>> =
         asSequence().whereWithIndex(predicate)
 
 fun <TSource> Array<TSource>.whereWithIndex(predicate: (TSource, Int) -> Boolean): Sequence<TSource> =

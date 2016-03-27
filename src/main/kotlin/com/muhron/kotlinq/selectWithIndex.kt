@@ -6,7 +6,7 @@ fun <TSource, TResult> Sequence<TSource>.selectWithIndex(selector: (TSource, Int
 fun <TSource, TResult> Iterable<TSource>.selectWithIndex(selector: (TSource, Int) -> TResult): Sequence<TResult> =
         asSequence().selectWithIndex(selector)
 
-fun <K, V, TResult> Map<K, V>.selectWithIndex(selector: (Map.Entry<K, V>, Int) -> TResult): Sequence<TResult> =
+fun <TSourceK, TSourceV, TResult> Map<TSourceK, TSourceV>.selectWithIndex(selector: (Map.Entry<TSourceK, TSourceV>, Int) -> TResult): Sequence<TResult> =
         asSequence().selectWithIndex(selector)
 
 fun <TSource, TResult> Array<TSource>.selectWithIndex(selector: (TSource, Int) -> TResult): Sequence<TResult> =

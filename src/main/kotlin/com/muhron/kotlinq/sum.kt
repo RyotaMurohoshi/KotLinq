@@ -303,19 +303,19 @@ fun DoubleArray.sum(selector: (Double) -> Float): Float = map(selector).sum()
 fun DoubleArray.sum(selector: (Double) -> Double): Double = map(selector).sum()
 
 @JvmName("sumOfByte")
-fun <K, V> Map<K, V>.sum(selector: (Map.Entry<K, V>) -> Byte): Int = map(selector).sum()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sum(selector: (Map.Entry<TSourceK, TSourceV>) -> Byte): Int = map(selector).sum()
 
 @JvmName("sumOfShort")
-fun <K, V> Map<K, V>.sum(selector: (Map.Entry<K, V>) -> Short): Int = map(selector).sum()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sum(selector: (Map.Entry<TSourceK, TSourceV>) -> Short): Int = map(selector).sum()
 
 @JvmName("sumOfInt")
-fun <K, V> Map<K, V>.sum(selector: (Map.Entry<K, V>) -> Int): Int = map(selector).sum()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sum(selector: (Map.Entry<TSourceK, TSourceV>) -> Int): Int = map(selector).sum()
 
 @JvmName("sumOfLong")
-fun <K, V> Map<K, V>.sum(selector: (Map.Entry<K, V>) -> Long): Long = map(selector).sum()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sum(selector: (Map.Entry<TSourceK, TSourceV>) -> Long): Long = map(selector).sum()
 
 @JvmName("sumOfFloat")
-fun <K, V> Map<K, V>.sum(selector: (Map.Entry<K, V>) -> Float): Float = map(selector).sum()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sum(selector: (Map.Entry<TSourceK, TSourceV>) -> Float): Float = map(selector).sum()
 
 @JvmName("sumOfDouble")
-fun <K, V> Map<K, V>.sum(selector: (Map.Entry<K, V>) -> Double): Double = map(selector).sum()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sum(selector: (Map.Entry<TSourceK, TSourceV>) -> Double): Double = map(selector).sum()

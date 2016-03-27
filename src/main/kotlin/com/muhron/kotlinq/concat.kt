@@ -10,7 +10,7 @@ fun <TSource> Sequence<TSource>.concat(second: Iterable<TSource>) =
 fun <TSource> Sequence<TSource>.concat(second: Array<TSource>) =
         plus(second.asSequence())
 
-fun <K, V> Sequence<Map.Entry<K, V>>.concat(second: Map<K, V>) =
+fun <TSourceK, TSourceV> Sequence<Map.Entry<TSourceK, TSourceV>>.concat(second: Map<TSourceK, TSourceV>) =
         plus(second.asSequence())
 
 // for Iterable
@@ -23,7 +23,7 @@ fun <TSource> Iterable<TSource>.concat(second: Iterable<TSource>) =
 fun <TSource> Iterable<TSource>.concat(second: Array<TSource>) =
         asSequence().concat(second)
 
-fun <K, V> Iterable<Map.Entry<K, V>>.concat(second: Map<K, V>) =
+fun <TSourceK, TSourceV> Iterable<Map.Entry<TSourceK, TSourceV>>.concat(second: Map<TSourceK, TSourceV>) =
         asSequence().concat(second)
 
 // for Array
@@ -36,18 +36,18 @@ fun <TSource> Array<TSource>.concat(second: Iterable<TSource>) =
 fun <TSource> Array<TSource>.concat(second: Array<TSource>) =
         asSequence().concat(second)
 
-fun <K, V> Array<Map.Entry<K, V>>.concat(second: Map<K, V>) =
+fun <TSourceK, TSourceV> Array<Map.Entry<TSourceK, TSourceV>>.concat(second: Map<TSourceK, TSourceV>) =
         asSequence().concat(second)
 
 // for Map
-fun <K, V> Map<K, V>.concat(second: Sequence<Map.Entry<K, V>>) =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.concat(second: Sequence<Map.Entry<TSourceK, TSourceV>>) =
         asSequence().concat(second)
 
-fun <K, V> Map<K, V>.concat(second: Iterable<Map.Entry<K, V>>) =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.concat(second: Iterable<Map.Entry<TSourceK, TSourceV>>) =
         asSequence().concat(second)
 
-fun <K, V> Map<K, V>.concat(second: Array<Map.Entry<K, V>>) =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.concat(second: Array<Map.Entry<TSourceK, TSourceV>>) =
         asSequence().concat(second)
 
-fun <K, V> Map<K, V>.concat(second: Map<K, V>) =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.concat(second: Map<TSourceK, TSourceV>) =
         asSequence().concat(second)

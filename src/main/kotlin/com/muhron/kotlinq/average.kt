@@ -303,19 +303,19 @@ fun DoubleArray.average(selector: (Double) -> Float): Double = map(selector).ave
 fun DoubleArray.average(selector: (Double) -> Double): Double = map(selector).average()
 
 @JvmName("averageOfByte")
-fun <K, V> Map<K, V>.average(selector: (Map.Entry<K, V>) -> Byte): Double = map(selector).average()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.average(selector: (Map.Entry<TSourceK, TSourceV>) -> Byte): Double = map(selector).average()
 
 @JvmName("averageOfShort")
-fun <K, V> Map<K, V>.average(selector: (Map.Entry<K, V>) -> Short): Double = map(selector).average()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.average(selector: (Map.Entry<TSourceK, TSourceV>) -> Short): Double = map(selector).average()
 
 @JvmName("averageOfInt")
-fun <K, V> Map<K, V>.average(selector: (Map.Entry<K, V>) -> Int): Double = map(selector).average()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.average(selector: (Map.Entry<TSourceK, TSourceV>) -> Int): Double = map(selector).average()
 
 @JvmName("averageOfLong")
-fun <K, V> Map<K, V>.average(selector: (Map.Entry<K, V>) -> Long): Double = map(selector).average()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.average(selector: (Map.Entry<TSourceK, TSourceV>) -> Long): Double = map(selector).average()
 
 @JvmName("averageOfFloat")
-fun <K, V> Map<K, V>.average(selector: (Map.Entry<K, V>) -> Float): Double = map(selector).average()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.average(selector: (Map.Entry<TSourceK, TSourceV>) -> Float): Double = map(selector).average()
 
 @JvmName("averageOfDouble")
-fun <K, V> Map<K, V>.average(selector: (Map.Entry<K, V>) -> Double): Double = map(selector).average()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.average(selector: (Map.Entry<TSourceK, TSourceV>) -> Double): Double = map(selector).average()

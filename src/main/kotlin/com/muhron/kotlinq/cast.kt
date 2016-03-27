@@ -1,6 +1,6 @@
 package com.muhron.kotlinq
 
-inline  fun <reified TResult> Sequence<*>.cast(): Sequence<TResult> = Sequence {
+inline fun <reified TResult> Sequence<*>.cast(): Sequence<TResult> = Sequence {
     map {
         require(it is TResult) { "cast faield." }
         it as TResult

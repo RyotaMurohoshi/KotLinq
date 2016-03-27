@@ -4,17 +4,17 @@ import java.util.Comparator
 import kotlin.comparisons.naturalOrder
 
 // thenBy with keySelector
-fun <T, K : Comparable<K>> OrderedEnumerable<T>.thenBy(keySelector: (T) -> K): OrderedEnumerable<T>
+fun <TSource, TKey : Comparable<TKey>> OrderedEnumerable<TSource>.thenBy(keySelector: (TSource) -> TKey): OrderedEnumerable<TSource>
         = this.createOrderedEnumerable(keySelector, naturalOrder(), false)
 
 // thenBy with keySelector and comparer
-fun <T, K : Comparable<K>> OrderedEnumerable<T>.thenBy(keySelector: (T) -> K, comparer: Comparator<K>): OrderedEnumerable<T>
+fun <TSource, TKey : Comparable<TKey>> OrderedEnumerable<TSource>.thenBy(keySelector: (TSource) -> TKey, comparer: Comparator<TKey>): OrderedEnumerable<TSource>
         = this.createOrderedEnumerable(keySelector, comparer, false)
 
 // thenByDescending with keySelector
-fun <T, K : Comparable<K>> OrderedEnumerable<T>.thenByDescending(keySelector: (T) -> K): OrderedEnumerable<T>
+fun <TSource, TKey : Comparable<TKey>> OrderedEnumerable<TSource>.thenByDescending(keySelector: (TSource) -> TKey): OrderedEnumerable<TSource>
         = this.createOrderedEnumerable(keySelector, naturalOrder(), true)
 
 // thenByDescending with keySelector and comparer
-fun <T, K : Comparable<K>> OrderedEnumerable<T>.thenByDescending(keySelector: (T) -> K, comparer: Comparator<K>): OrderedEnumerable<T>
+fun <TSource, TKey : Comparable<TKey>> OrderedEnumerable<TSource>.thenByDescending(keySelector: (TSource) -> TKey, comparer: Comparator<TKey>): OrderedEnumerable<TSource>
         = this.createOrderedEnumerable(keySelector, comparer, true)

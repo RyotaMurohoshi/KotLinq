@@ -7,7 +7,7 @@ package com.muhron.kotlinq
 fun <TSource> Iterable<TSource>.distinct(): Sequence<TSource> =
         asSequence().distinct()
 
-fun <K, V> Map<K, V>.distinct(): Sequence<Map.Entry<K, V>> =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.distinct(): Sequence<Map.Entry<TSourceK, TSourceV>> =
         asSequence().distinct()
 
 fun <TSource> Array<TSource>.distinct(): Sequence<TSource> =

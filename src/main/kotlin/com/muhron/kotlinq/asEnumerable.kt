@@ -6,4 +6,4 @@ fun <TSource> Array<TSource>.asEnumerable(): Sequence<TSource> = asSequence().as
 
 fun <TSource> Iterable<TSource>.asEnumerable(): Sequence<TSource> = asSequence().asEnumerable()
 
-fun <K, V> Map<K, V>.asEnumerable(): Sequence<Map.Entry<K, V>> = asSequence().asEnumerable()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.asEnumerable(): Sequence<Map.Entry<TSourceK, TSourceV>> = asSequence().asEnumerable()

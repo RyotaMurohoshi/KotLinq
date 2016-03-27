@@ -9,7 +9,7 @@ fun <TSource, TKey> Iterable<TSource>.toLookup(keySelector: (TSource) -> TKey): 
 fun <TSource, TKey> Array<TSource>.toLookup(keySelector: (TSource) -> TKey): Lookup<TKey, TSource>
         = asSequence().toLookup(keySelector)
 
-fun <K, V, TKey> Map<K, V>.toLookup(keySelector: (Map.Entry<K, V>) -> TKey): Lookup<TKey, Map.Entry<K, V>>
+fun <TSourceK, TSourceV, TKey> Map<TSourceK, TSourceV>.toLookup(keySelector: (Map.Entry<TSourceK, TSourceV>) -> TKey): Lookup<TKey, Map.Entry<TSourceK, TSourceV>>
         = asSequence().toLookup(keySelector)
 
 fun <TSource, TKey, TElement> Sequence<TSource>.toLookup(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Lookup<TKey, TElement>
@@ -21,5 +21,5 @@ fun <TSource, TKey, TElement> Iterable<TSource>.toLookup(keySelector: (TSource) 
 fun <TSource, TKey, TElement> Array<TSource>.toLookup(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Lookup<TKey, TElement>
         = asSequence().toLookup(keySelector, elementSelector)
 
-fun <K, V, TKey, TElement> Map<K, V>.toLookup(keySelector: (Map.Entry<K, V>) -> TKey, elementSelector: (Map.Entry<K, V>) -> TElement): Lookup<TKey, TElement>
+fun <TSourceK, TSourceV, TKey, TElement> Map<TSourceK, TSourceV>.toLookup(keySelector: (Map.Entry<TSourceK, TSourceV>) -> TKey, elementSelector: (Map.Entry<TSourceK, TSourceV>) -> TElement): Lookup<TKey, TElement>
         = asSequence().toLookup(keySelector, elementSelector)

@@ -1,7 +1,7 @@
 package com.muhron.kotlinq
 
-fun <K, V> Map<K, V>.single(): Map.Entry<K, V> =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.single(): Map.Entry<TSourceK, TSourceV> =
         asSequence().single()
 
-inline fun <K, V> Map<K, V>.single(predicate: (Map.Entry<K, V>) -> Boolean): Map.Entry<K, V> =
+inline fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.single(predicate: (Map.Entry<TSourceK, TSourceV>) -> Boolean): Map.Entry<TSourceK, TSourceV> =
         asSequence().single(predicate)

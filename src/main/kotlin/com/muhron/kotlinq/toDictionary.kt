@@ -9,7 +9,7 @@ fun <TSource, TKey> Iterable<TSource>.toDictionary(keySelector: (TSource) -> TKe
 fun <TSource, TKey> Array<TSource>.toDictionary(keySelector: (TSource) -> TKey): Map<TKey, TSource> =
         toDictionary(keySelector)
 
-fun <K, TKey, V> Map<K, V>.toDictionary(keySelector: (Map.Entry<K, V>) -> TKey): Map<TKey, Map.Entry<K, V>> =
+fun <TSourceK, TSourceV, TKey> Map<TSourceK, TSourceV>.toDictionary(keySelector: (Map.Entry<TSourceK, TSourceV>) -> TKey): Map<TKey, Map.Entry<TSourceK, TSourceV>> =
         toDictionary(keySelector)
 
 fun <TSource, TKey, TElement> Iterable<TSource>.toDictionary(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Map<TKey, TElement> =
@@ -18,11 +18,11 @@ fun <TSource, TKey, TElement> Iterable<TSource>.toDictionary(keySelector: (TSour
 fun <TSource, TKey, TElement> Array<TSource>.toDictionary(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Map<TKey, TElement> =
         asSequence().toDictionary(keySelector, elementSelector)
 
-fun <K, V, TKey, TElement> Map<K, V>.toDictionary(keySelector: (Map.Entry<K, V>) -> TKey, elementSelector: (Map.Entry<K, V>) -> TElement): Map<TKey, TElement> =
+fun <TSourceK, TSourceV, TKey, TElement> Map<TSourceK, TSourceV>.toDictionary(keySelector: (Map.Entry<TSourceK, TSourceV>) -> TKey, elementSelector: (Map.Entry<TSourceK, TSourceV>) -> TElement): Map<TKey, TElement> =
         asSequence().toDictionary(keySelector, elementSelector)
 
 
-fun <TSource, TKey, V> Sequence<TSource>.toDictionary(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> V): Map<TKey, V> {
+fun <TSource, TKey, TElement> Sequence<TSource>.toDictionary(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Map<TKey, TElement> {
     val list = toList()
     val result = list.associateBy(keySelector, elementSelector)
 

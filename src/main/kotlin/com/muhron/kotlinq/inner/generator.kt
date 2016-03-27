@@ -174,7 +174,7 @@ fun createSelectorSumMap(numberTypeName: String): String = createSelectorMap(num
 
 fun createSelectorMap(numberTypeName: String, returnTypeName: String, methodName: String) = """
 @JvmName("${methodName}Of$numberTypeName")
-fun <K, V> Map<K, V>.$methodName(selector: (Map.Entry<K, V>) -> $numberTypeName): $returnTypeName = map(selector).$methodName()"""
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.$methodName(selector: (Map.Entry<TSourceK, TSourceV>) -> $numberTypeName): $returnTypeName = map(selector).$methodName()"""
 
 fun toSumReturnType(numberTypeName: String): String = when (numberTypeName) {
     "Int" -> "Int"

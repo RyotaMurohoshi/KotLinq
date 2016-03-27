@@ -7,7 +7,7 @@ fun <TSource> Sequence<TSource>.elementAtOrDefault(index: Int): TSource? =
 fun <TSource> Iterable<TSource>.elementAtOrDefault(index: Int): TSource? =
         asSequence().elementAtOrDefault(index)
 
-fun <K, V> Map<K, V>.elementAtOrDefault(index: Int): Map.Entry<K, V>? =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.elementAtOrDefault(index: Int): Map.Entry<TSourceK, TSourceV>? =
         asSequence().elementAtOrDefault(index)
 
 fun <TSource> Array<TSource>.elementAtOrDefault(index: Int): TSource? =
