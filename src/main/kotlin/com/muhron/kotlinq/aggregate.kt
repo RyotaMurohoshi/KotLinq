@@ -31,11 +31,11 @@ inline fun <TSource, TAccumulate, TResult> Array<TSource>.aggregate(seed: TAccum
         = asSequence().aggregate(seed, func, resultSelector)
 
 // for Map
-inline fun <K, V> Map<K, V>.aggregate(func: (Map.Entry<K, V>, Map.Entry<K, V>) -> Map.Entry<K, V>): Map.Entry<K, V>
+inline fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.aggregate(func: (Map.Entry<TSourceK, TSourceV>, Map.Entry<TSourceK, TSourceV>) -> Map.Entry<TSourceK, TSourceV>): Map.Entry<TSourceK, TSourceV>
         = asSequence().aggregate(func)
 
-inline fun <K, V, TAccumulate> Map<K, V>.aggregate(seed: TAccumulate, func: (seed: TAccumulate, Map.Entry<K, V>) -> TAccumulate): TAccumulate
+inline fun <TSourceK, TSourceV, TAccumulate> Map<TSourceK, TSourceV>.aggregate(seed: TAccumulate, func: (seed: TAccumulate, Map.Entry<TSourceK, TSourceV>) -> TAccumulate): TAccumulate
         = asSequence().aggregate(seed, func)
 
-inline fun <K, V, TAccumulate, TResult> Map<K, V>.aggregate(seed: TAccumulate, func: (seed: TAccumulate, Map.Entry<K, V>) -> TAccumulate, resultSelector: (TAccumulate) -> TResult)
+inline fun <TSourceK, TSourceV, TAccumulate, TResult> Map<TSourceK, TSourceV>.aggregate(seed: TAccumulate, func: (seed: TAccumulate, Map.Entry<TSourceK, TSourceV>) -> TAccumulate, resultSelector: (TAccumulate) -> TResult)
         = asSequence().aggregate(seed, func, resultSelector)

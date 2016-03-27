@@ -22,11 +22,11 @@ fun <TOuter, TInner, TKey, TResult> Sequence<TOuter>.groupJoin(
         resultSelector: (TOuter, Sequence<TInner>) -> TResult): Sequence<TResult> =
         groupJoin(this, inner.asSequence(), outerKeySelector, innerKeySelector, resultSelector)
 
-fun <TOuter, K, V, TKey, TResult> Sequence<TOuter>.groupJoin(
-        inner: Map<K, V>,
+fun <TOuter, TOuterK, TOuterV, TKey, TResult> Sequence<TOuter>.groupJoin(
+        inner: Map<TOuterK, TOuterV>,
         outerKeySelector: (TOuter) -> TKey,
-        innerKeySelector: (Map.Entry<K, V>) -> TKey,
-        resultSelector: (TOuter, Sequence<Map.Entry<K, V>>) -> TResult): Sequence<TResult> =
+        innerKeySelector: (Map.Entry<TOuterK, TOuterV>) -> TKey,
+        resultSelector: (TOuter, Sequence<Map.Entry<TOuterK, TOuterV>>) -> TResult): Sequence<TResult> =
         groupJoin(this, inner.asSequence(), outerKeySelector, innerKeySelector, resultSelector)
 
 // for Iterable
@@ -51,11 +51,11 @@ fun <TOuter, TInner, TKey, TResult> Iterable<TOuter>.groupJoin(
         resultSelector: (TOuter, Sequence<TInner>) -> TResult): Sequence<TResult> =
         asSequence().groupJoin(inner, outerKeySelector, innerKeySelector, resultSelector)
 
-fun <TOuter, K, V, TKey, TResult> Iterable<TOuter>.groupJoin(
-        inner: Map<K, V>,
+fun <TOuter, TOuterK, TOuterV, TKey, TResult> Iterable<TOuter>.groupJoin(
+        inner: Map<TOuterK, TOuterV>,
         outerKeySelector: (TOuter) -> TKey,
-        innerKeySelector: (Map.Entry<K, V>) -> TKey,
-        resultSelector: (TOuter, Sequence<Map.Entry<K, V>>) -> TResult): Sequence<TResult> =
+        innerKeySelector: (Map.Entry<TOuterK, TOuterV>) -> TKey,
+        resultSelector: (TOuter, Sequence<Map.Entry<TOuterK, TOuterV>>) -> TResult): Sequence<TResult> =
         asSequence().groupJoin(inner, outerKeySelector, innerKeySelector, resultSelector)
 
 // for Array
@@ -80,40 +80,40 @@ fun <TOuter, TInner, TKey, TResult> Array<TOuter>.groupJoin(
         resultSelector: (TOuter, Sequence<TInner>) -> TResult): Sequence<TResult> =
         asSequence().groupJoin(inner, outerKeySelector, innerKeySelector, resultSelector)
 
-fun <TOuter, K, V, TKey, TResult> Array<TOuter>.groupJoin(
-        inner: Map<K, V>,
+fun <TOuter, TOuterK, TOuterV, TKey, TResult> Array<TOuter>.groupJoin(
+        inner: Map<TOuterK, TOuterV>,
         outerKeySelector: (TOuter) -> TKey,
-        innerKeySelector: (Map.Entry<K, V>) -> TKey,
-        resultSelector: (TOuter, Sequence<Map.Entry<K, V>>) -> TResult): Sequence<TResult> =
+        innerKeySelector: (Map.Entry<TOuterK, TOuterV>) -> TKey,
+        resultSelector: (TOuter, Sequence<Map.Entry<TOuterK, TOuterV>>) -> TResult): Sequence<TResult> =
         asSequence().groupJoin(inner, outerKeySelector, innerKeySelector, resultSelector)
 
 // for Map
-fun <K, V, TInner, TKey, TResult> Map<K, V>.groupJoin(
+fun <TOuterK, TOuterV, TInner, TKey, TResult> Map<TOuterK, TOuterV>.groupJoin(
         inner: Sequence<TInner>,
-        outerKeySelector: (Map.Entry<K, V>) -> TKey,
+        outerKeySelector: (Map.Entry<TOuterK, TOuterV>) -> TKey,
         innerKeySelector: (TInner) -> TKey,
-        resultSelector: (Map.Entry<K, V>, Sequence<TInner>) -> TResult): Sequence<TResult> =
+        resultSelector: (Map.Entry<TOuterK, TOuterV>, Sequence<TInner>) -> TResult): Sequence<TResult> =
         asSequence().groupJoin(inner, outerKeySelector, innerKeySelector, resultSelector)
 
-fun <K, V, TInner, TKey, TResult> Map<K, V>.groupJoin(
+fun <TOuterK, TOuterV, TInner, TKey, TResult> Map<TOuterK, TOuterV>.groupJoin(
         inner: Iterable<TInner>,
-        outerKeySelector: (Map.Entry<K, V>) -> TKey,
+        outerKeySelector: (Map.Entry<TOuterK, TOuterV>) -> TKey,
         innerKeySelector: (TInner) -> TKey,
-        resultSelector: (Map.Entry<K, V>, Sequence<TInner>) -> TResult): Sequence<TResult> =
+        resultSelector: (Map.Entry<TOuterK, TOuterV>, Sequence<TInner>) -> TResult): Sequence<TResult> =
         asSequence().groupJoin(inner, outerKeySelector, innerKeySelector, resultSelector)
 
-fun <K, V, TInner, TKey, TResult> Map<K, V>.groupJoin(
+fun <TOuterK, TOuterV, TInner, TKey, TResult> Map<TOuterK, TOuterV>.groupJoin(
         inner: Array<TInner>,
-        outerKeySelector: (Map.Entry<K, V>) -> TKey,
+        outerKeySelector: (Map.Entry<TOuterK, TOuterV>) -> TKey,
         innerKeySelector: (TInner) -> TKey,
-        resultSelector: (Map.Entry<K, V>, Sequence<TInner>) -> TResult): Sequence<TResult> =
+        resultSelector: (Map.Entry<TOuterK, TOuterV>, Sequence<TInner>) -> TResult): Sequence<TResult> =
         asSequence().groupJoin(inner, outerKeySelector, innerKeySelector, resultSelector)
 
-fun <K0, V0, K1, V1, TKey, TResult> Map<K0, V0>.groupJoin(
-        inner: Map<K1, V1>,
-        outerKeySelector: (Map.Entry<K0, V0>) -> TKey,
-        innerKeySelector: (Map.Entry<K1, V1>) -> TKey,
-        resultSelector: (Map.Entry<K0, V0>, Sequence<Map.Entry<K1, V1>>) -> TResult): Sequence<TResult> =
+fun <TOuterK, TOuterV, TInnerK, TInnerV, TKey, TResult> Map<TOuterK, TOuterV>.groupJoin(
+        inner: Map<TInnerK, TInnerV>,
+        outerKeySelector: (Map.Entry<TOuterK, TOuterV>) -> TKey,
+        innerKeySelector: (Map.Entry<TInnerK, TInnerV>) -> TKey,
+        resultSelector: (Map.Entry<TOuterK, TOuterV>, Sequence<Map.Entry<TInnerK, TInnerV>>) -> TResult): Sequence<TResult> =
         asSequence().groupJoin(inner, outerKeySelector, innerKeySelector, resultSelector)
 
 @JvmName("groupJoins")

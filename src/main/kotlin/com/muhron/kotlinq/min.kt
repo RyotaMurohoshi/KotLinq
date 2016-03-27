@@ -318,19 +318,19 @@ fun DoubleArray.min(selector: (Double) -> Float): Float = map(selector).min()
 fun DoubleArray.min(selector: (Double) -> Double): Double = map(selector).min()
 
 @JvmName("minOfByte")
-fun <K, V> Map<K, V>.min(selector: (Map.Entry<K, V>) -> Byte): Byte = map(selector).min()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.min(selector: (Map.Entry<TSourceK, TSourceV>) -> Byte): Byte = map(selector).min()
 
 @JvmName("minOfShort")
-fun <K, V> Map<K, V>.min(selector: (Map.Entry<K, V>) -> Short): Short = map(selector).min()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.min(selector: (Map.Entry<TSourceK, TSourceV>) -> Short): Short = map(selector).min()
 
 @JvmName("minOfInt")
-fun <K, V> Map<K, V>.min(selector: (Map.Entry<K, V>) -> Int): Int = map(selector).min()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.min(selector: (Map.Entry<TSourceK, TSourceV>) -> Int): Int = map(selector).min()
 
 @JvmName("minOfLong")
-fun <K, V> Map<K, V>.min(selector: (Map.Entry<K, V>) -> Long): Long = map(selector).min()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.min(selector: (Map.Entry<TSourceK, TSourceV>) -> Long): Long = map(selector).min()
 
 @JvmName("minOfFloat")
-fun <K, V> Map<K, V>.min(selector: (Map.Entry<K, V>) -> Float): Float = map(selector).min()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.min(selector: (Map.Entry<TSourceK, TSourceV>) -> Float): Float = map(selector).min()
 
 @JvmName("minOfDouble")
-fun <K, V> Map<K, V>.min(selector: (Map.Entry<K, V>) -> Double): Double = map(selector).min()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.min(selector: (Map.Entry<TSourceK, TSourceV>) -> Double): Double = map(selector).min()

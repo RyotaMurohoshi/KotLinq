@@ -6,7 +6,7 @@ fun <TSource> Sequence<TSource>.skipWhile(predicate: (TSource) -> Boolean): Sequ
 fun <TSource> Iterable<TSource>.skipWhile(predicate: (TSource) -> Boolean): Sequence<TSource> =
         asSequence().skipWhile(predicate)
 
-fun <K, V> Map<K, V>.skipWhile(predicate: (Map.Entry<K, V>) -> Boolean): Sequence<Map.Entry<K, V>> =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.skipWhile(predicate: (Map.Entry<TSourceK, TSourceV>) -> Boolean): Sequence<Map.Entry<TSourceK, TSourceV>> =
         asSequence().skipWhile(predicate)
 
 fun <TSource> Array<TSource>.skipWhile(predicate: (TSource) -> Boolean): Sequence<TSource> =

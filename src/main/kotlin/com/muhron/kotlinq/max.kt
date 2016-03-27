@@ -318,19 +318,19 @@ fun DoubleArray.max(selector: (Double) -> Float): Float = map(selector).max()
 fun DoubleArray.max(selector: (Double) -> Double): Double = map(selector).max()
 
 @JvmName("maxOfByte")
-fun <K, V> Map<K, V>.max(selector: (Map.Entry<K, V>) -> Byte): Byte = map(selector).max()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.max(selector: (Map.Entry<TSourceK, TSourceV>) -> Byte): Byte = map(selector).max()
 
 @JvmName("maxOfShort")
-fun <K, V> Map<K, V>.max(selector: (Map.Entry<K, V>) -> Short): Short = map(selector).max()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.max(selector: (Map.Entry<TSourceK, TSourceV>) -> Short): Short = map(selector).max()
 
 @JvmName("maxOfInt")
-fun <K, V> Map<K, V>.max(selector: (Map.Entry<K, V>) -> Int): Int = map(selector).max()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.max(selector: (Map.Entry<TSourceK, TSourceV>) -> Int): Int = map(selector).max()
 
 @JvmName("maxOfLong")
-fun <K, V> Map<K, V>.max(selector: (Map.Entry<K, V>) -> Long): Long = map(selector).max()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.max(selector: (Map.Entry<TSourceK, TSourceV>) -> Long): Long = map(selector).max()
 
 @JvmName("maxOfFloat")
-fun <K, V> Map<K, V>.max(selector: (Map.Entry<K, V>) -> Float): Float = map(selector).max()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.max(selector: (Map.Entry<TSourceK, TSourceV>) -> Float): Float = map(selector).max()
 
 @JvmName("maxOfDouble")
-fun <K, V> Map<K, V>.max(selector: (Map.Entry<K, V>) -> Double): Double = map(selector).max()
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.max(selector: (Map.Entry<TSourceK, TSourceV>) -> Double): Double = map(selector).max()

@@ -35,7 +35,7 @@ fun <T> Sequence<T>.sequenceEqual(second: Iterable<T>): Boolean =
 fun <T> Sequence<T>.sequenceEqual(second: Array<T>): Boolean =
         sequenceEqual(second.asSequence())
 
-fun <K, V> Sequence<Map.Entry<K, V>>.sequenceEqual(second: Map<K, V>): Boolean =
+fun <TSourceK, TSourceV> Sequence<Map.Entry<TSourceK, TSourceV>>.sequenceEqual(second: Map<TSourceK, TSourceV>): Boolean =
         sequenceEqual(second.asSequence())
 
 
@@ -48,7 +48,7 @@ fun <T> Iterable<T>.sequenceEqual(second: Iterable<T>): Boolean =
 fun <T> Iterable<T>.sequenceEqual(second: Array<T>): Boolean =
         asSequence().sequenceEqual(second.asSequence())
 
-fun <K, V> Iterable<Map.Entry<K, V>>.sequenceEqual(second: Map<K, V>): Boolean =
+fun <TSourceK, TSourceV> Iterable<Map.Entry<TSourceK, TSourceV>>.sequenceEqual(second: Map<TSourceK, TSourceV>): Boolean =
         asSequence().sequenceEqual(second.asSequence())
 
 fun <T> Array<T>.sequenceEqual(second: Sequence<T>): Boolean =
@@ -60,17 +60,17 @@ fun <T> Array<T>.sequenceEqual(second: Iterable<T>): Boolean =
 fun <T> Array<T>.sequenceEqual(second: Array<T>): Boolean =
         sequenceEqual(second.asSequence())
 
-fun <K, V> Array<Map.Entry<K, V>>.sequenceEqual(second: Map<K, V>): Boolean =
+fun <TSourceK, TSourceV> Array<Map.Entry<TSourceK, TSourceV>>.sequenceEqual(second: Map<TSourceK, TSourceV>): Boolean =
         asSequence().sequenceEqual(second.asSequence())
 
-fun <K, V> Map<K, V>.sequenceEqual(second: Sequence<Map.Entry<K, V>>): Boolean =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sequenceEqual(second: Sequence<Map.Entry<TSourceK, TSourceV>>): Boolean =
         asSequence().sequenceEqual(second.asSequence())
 
-fun <K, V> Map<K, V>.sequenceEqual(second: Iterable<Map.Entry<K, V>>): Boolean =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sequenceEqual(second: Iterable<Map.Entry<TSourceK, TSourceV>>): Boolean =
         asSequence().sequenceEqual(second.asSequence())
 
-fun <K, V> Map<K, V>.sequenceEqual(second: Array<Map.Entry<K, V>>): Boolean =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sequenceEqual(second: Array<Map.Entry<TSourceK, TSourceV>>): Boolean =
         asSequence().sequenceEqual(second.asSequence())
 
-fun <K, V> Map<K, V>.sequenceEqual(second: Map<K, V>): Boolean =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.sequenceEqual(second: Map<TSourceK, TSourceV>): Boolean =
         asSequence().sequenceEqual(second.asSequence())

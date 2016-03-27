@@ -7,7 +7,7 @@ fun <TSource> Sequence<TSource>.firstOrDefault(): TSource? =
 fun <TSource> Iterable<TSource>.firstOrDefault(): TSource? =
         asSequence().firstOrDefault()
 
-fun <K, V> Map<K, V>.firstOrDefault(): Map.Entry<K, V>? =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.firstOrDefault(): Map.Entry<TSourceK, TSourceV>? =
         asSequence().firstOrDefault()
 
 fun <TSource> Array<TSource>.firstOrDefault(): TSource? =
@@ -20,7 +20,7 @@ inline fun <TSource> Sequence<TSource>.firstOrDefault(predicate: (TSource) -> Bo
 inline fun <TSource> Iterable<TSource>.firstOrDefault(predicate: (TSource) -> Boolean): TSource? =
         asSequence().firstOrDefault(predicate)
 
-inline fun <K, V> Map<K, V>.firstOrDefault(predicate: (Map.Entry<K, V>) -> Boolean): Map.Entry<K, V>? =
+inline fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.firstOrDefault(predicate: (Map.Entry<TSourceK, TSourceV>) -> Boolean): Map.Entry<TSourceK, TSourceV>? =
         asSequence().firstOrDefault(predicate)
 
 inline fun <TSource> Array<TSource>.firstOrDefault(predicate: (TSource) -> Boolean): TSource? =

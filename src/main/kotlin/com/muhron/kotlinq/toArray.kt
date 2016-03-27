@@ -11,5 +11,5 @@ inline fun <reified TSource> Iterable<TSource>.toArray(): Array<TSource> =
 inline fun <reified TSource> Array<TSource>.toArray(): Array<TSource> =
         asSequence().toArray()
 
-inline fun <reified K, reified V> Map<K, V>.toArray(): Array<Map.Entry<K, V>> =
+inline fun <reified TSourceK, reified TSourceV> Map<TSourceK, TSourceV>.toArray(): Array<Map.Entry<TSourceK, TSourceV>> =
         asSequence().toArray()

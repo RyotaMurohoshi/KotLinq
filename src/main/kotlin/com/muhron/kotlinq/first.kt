@@ -1,10 +1,10 @@
 package com.muhron.kotlinq
 
 // first() and <T> first(predicate : (T) -> Boolean) methods are implemented in kotlin.collections or kotlin.sequences
-// without Map<K, V>.
+// without Map<TSourceK,  TSourceV>.
 
-fun <K, V> Map<K, V>.first() =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.first() =
         asSequence().first()
 
-inline fun <K, V> Map<K, V>.first(predicate: (Map.Entry<K, V>) -> Boolean) =
+inline fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.first(predicate: (Map.Entry<TSourceK, TSourceV>) -> Boolean) =
         asSequence().first(predicate)

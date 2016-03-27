@@ -9,5 +9,5 @@ fun <TSource> Array<TSource>.contains(value: TSource): Boolean =
 fun <TSource> Iterable<TSource>.contains(value: TSource): Boolean =
         asSequence().contains(value)
 
-fun <K, V> Map<K, V>.contains(value: Map.Entry<K, V>): Boolean =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.contains(value: Map.Entry<TSourceK, TSourceV>): Boolean =
         asSequence().contains(value)

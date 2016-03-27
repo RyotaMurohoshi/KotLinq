@@ -13,7 +13,7 @@ fun <TSource, TKey : Comparable<TKey>> Iterable<TSource>.orderBy(keySelector: (T
 fun <TSource, TKey : Comparable<TKey>> Array<TSource>.orderBy(keySelector: (TSource) -> TKey): OrderedEnumerable<TSource>
         = asSequence().orderBy(keySelector)
 
-fun <K, V, TKey : Comparable<TKey>> Map<K, V>.orderBy(keySelector: (Map.Entry<K, V>) -> TKey): OrderedEnumerable<Map.Entry<K, V>>
+fun <TSourceK, TSourceV, TKey : Comparable<TKey>> Map<TSourceK, TSourceV>.orderBy(keySelector: (Map.Entry<TSourceK, TSourceV>) -> TKey): OrderedEnumerable<Map.Entry<TSourceK, TSourceV>>
         = asSequence().orderBy(keySelector)
 
 // orderBy with keySelector and comparer
@@ -26,7 +26,7 @@ fun <TSource, TKey : Comparable<TKey>> Iterable<TSource>.orderBy(keySelector: (T
 fun <TSource, TKey : Comparable<TKey>> Array<TSource>.orderBy(keySelector: (TSource) -> TKey, comparer: Comparator<TKey>): OrderedEnumerable<TSource>
         = asSequence().orderBy(keySelector, comparer)
 
-fun <K, V, TKey : Comparable<TKey>> Map<K, V>.orderBy(keySelector: (Map.Entry<K, V>) -> TKey, comparer: Comparator<TKey>): OrderedEnumerable<Map.Entry<K, V>>
+fun <TSourceK, TSourceV, TKey : Comparable<TKey>> Map<TSourceK, TSourceV>.orderBy(keySelector: (Map.Entry<TSourceK, TSourceV>) -> TKey, comparer: Comparator<TKey>): OrderedEnumerable<Map.Entry<TSourceK, TSourceV>>
         = asSequence().orderBy(keySelector, comparer)
 
 // orderByDescending with keySelector
@@ -39,7 +39,7 @@ fun <TSource, TKey : Comparable<TKey>> Iterable<TSource>.orderByDescending(keySe
 fun <TSource, TKey : Comparable<TKey>> Array<TSource>.orderByDescending(keySelector: (TSource) -> TKey): OrderedEnumerable<TSource>
         = asSequence().orderByDescending(keySelector)
 
-fun <K, V, TKey : Comparable<TKey>> Map<K, V>.orderByDescending(keySelector: (Map.Entry<K, V>) -> TKey): OrderedEnumerable<Map.Entry<K, V>>
+fun <TSourceK, TSourceV, TKey : Comparable<TKey>> Map<TSourceK, TSourceV>.orderByDescending(keySelector: (Map.Entry<TSourceK, TSourceV>) -> TKey): OrderedEnumerable<Map.Entry<TSourceK, TSourceV>>
         = asSequence().orderByDescending(keySelector)
 
 // orderByDescending with keySelector and comparer
@@ -52,5 +52,5 @@ fun <TSource, TKey : Comparable<TKey>> Iterable<TSource>.orderByDescending(keySe
 fun <TSource, TKey : Comparable<TKey>> Array<TSource>.orderByDescending(keySelector: (TSource) -> TKey, comparer: Comparator<TKey>): OrderedEnumerable<TSource>
         = asSequence().orderByDescending(keySelector, comparer)
 
-fun <K, V, TKey : Comparable<TKey>> Map<K, V>.orderByDescending(keySelector: (Map.Entry<K, V>) -> TKey, comparer: Comparator<TKey>): OrderedEnumerable<Map.Entry<K, V>>
+fun <TSourceK, TSourceV, TKey : Comparable<TKey>> Map<TSourceK, TSourceV>.orderByDescending(keySelector: (Map.Entry<TSourceK, TSourceV>) -> TKey, comparer: Comparator<TKey>): OrderedEnumerable<Map.Entry<TSourceK, TSourceV>>
         = asSequence().orderByDescending(keySelector, comparer)

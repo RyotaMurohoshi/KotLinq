@@ -9,5 +9,5 @@ fun <TSource> Iterable<TSource>.reverse(): Sequence<TSource> =
 fun <TSource> Array<TSource>.reverse(): Sequence<TSource> =
         asSequence().reverse()
 
-fun <K, V> Map<K, V>.reverse(): Sequence<Map.Entry<K, V>> =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.reverse(): Sequence<Map.Entry<TSourceK, TSourceV>> =
         asSequence().reverse()

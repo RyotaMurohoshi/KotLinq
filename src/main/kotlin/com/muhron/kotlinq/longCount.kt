@@ -10,5 +10,5 @@ fun <TSource> Iterable<TSource>.longCount(): Long =
 fun <TSource> Array<TSource>.longCount(): Long =
         asSequence().longCount()
 
-fun <K, V> Map<K, V>.longCount(): Long =
+fun <TSourceK, TSourceV> Map<TSourceK, TSourceV>.longCount(): Long =
         asSequence().longCount()
