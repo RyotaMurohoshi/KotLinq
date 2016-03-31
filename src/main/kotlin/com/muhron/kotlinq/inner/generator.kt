@@ -102,14 +102,16 @@ fun createMinMaxExtension(typeDef: TypeDef, methodName: String) =
         createExtension(typeDef, typeDef.numberTypeName, methodName)
 
 fun createSumExtension(typeDef: TypeDef) =
-        createExtension(typeDef, toSumReturnType(typeDef.numberTypeName), "sum")
+        createExtension(typeDef, toSumReturnType(typeDef.numberTypeName), "sum", false)
 
-fun createExtension(typeDef: TypeDef, returnType: String, methodName: String) = """
+fun createExtension(typeDef: TypeDef, returnType: String, methodName: String, isNeedAny: Boolean = true) = """
 @JvmName("${methodName}Of${typeDef.numberTypeName}")
 fun ${typeDef.collectionTypeName}<${typeDef.numberTypeName}>.$methodName(): $returnType {
-    require(any()) { "empty." }
+${anyCheckIfNeed(isNeedAny)}
     return Calculator.$methodName(this)
 }"""
+
+fun anyCheckIfNeed(isNeed: Boolean): String = if (isNeed) "    require(any()) { \"empty.\" }" else ""
 
 // methods for Array
 fun createAverageArrayExtension(numberType: String) =

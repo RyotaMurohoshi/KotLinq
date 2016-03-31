@@ -4,109 +4,109 @@ import com.muhron.kotlinq.inner.Calculator
 
 @JvmName("sumOfByte")
 fun Sequence<Byte>.sum(): Int {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfShort")
 fun Sequence<Short>.sum(): Int {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfInt")
 fun Sequence<Int>.sum(): Int {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfLong")
 fun Sequence<Long>.sum(): Long {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfFloat")
 fun Sequence<Float>.sum(): Float {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfDouble")
 fun Sequence<Double>.sum(): Double {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfByte")
 fun Iterable<Byte>.sum(): Int {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfShort")
 fun Iterable<Short>.sum(): Int {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfInt")
 fun Iterable<Int>.sum(): Int {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfLong")
 fun Iterable<Long>.sum(): Long {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfFloat")
 fun Iterable<Float>.sum(): Float {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfDouble")
 fun Iterable<Double>.sum(): Double {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfByte")
 fun Array<Byte>.sum(): Int {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfShort")
 fun Array<Short>.sum(): Int {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfInt")
 fun Array<Int>.sum(): Int {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfLong")
 fun Array<Long>.sum(): Long {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfFloat")
 fun Array<Float>.sum(): Float {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
 @JvmName("sumOfDouble")
 fun Array<Double>.sum(): Double {
-    require(any()) { "empty." }
+
     return Calculator.sum(this)
 }
 
