@@ -10,5 +10,16 @@ KotlinにおけるLINQライクなコレクション操作APIライブラリで�
 * 投稿先:http://qiita.com/RyotaMurohoshi
 * Twitter:https://twitter.com/RyotaMurohoshi
 
+# Kotlinのkotlin.collectionsやkotlin.sequences APIとの違い
+// 書くこと
+
+# C#のLINQとの違い
+
+// 書くこと
+* no some interfaces arguments
+* selectWithIndex and whereWithIndex
+* average, min, max and sum problems
+* nullable return type methods
+
 # ライセンス
 MIT License です。
