@@ -10,6 +10,10 @@ KotlinにおけるLINQライクなコレクション操作APIライブラリで�
 * 投稿先:http://qiita.com/RyotaMurohoshi
 * Twitter:https://twitter.com/RyotaMurohoshi
 
+# kotlin.sequences.Sequenceについて
+
+// 書くこと
+
 # Kotlinのkotlin.collectionsやkotlin.sequences APIとの違い
 // 書くこと
 

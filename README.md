@@ -8,6 +8,10 @@ Ryota Murohoshi is game Programmer and C#er in Japan.
 * Posts:http://qiita.com/RyotaMurohoshi (JPN)
 * Twitter:https://twitter.com/RyotaMurohoshi (JPN)
 
+# About kotlin.sequences.Sequence
+
+// TODO write
+
 # Difference from Kotlin collections and Sequence API
 
 // TODO write
