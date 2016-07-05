@@ -1,4 +1,4 @@
-package com.muhron.kotlinq
+package com.muhron.kotlinq.default_methods
 
 import org.junit.Assert
 import org.junit.Test
@@ -27,19 +27,19 @@ class ToDictionaryTest {
 
     @Test
     fun test0() {
-        val result = sequenceOf(1, 2, 3).toDictionary { it }
+        val result = listOf(1, 2, 3).associateBy { it }
         Assert.assertEquals(result, mapOf(1 to 1, 2 to 2, 3 to 3));
     }
 
     @Test
     fun test1() {
-        val result = sequenceOf(1, 2, 3).toDictionary({ it }, { it.toString() })
-        Assert.assertEquals(result, mapOf(1 to "1", 2 to "2", 3 to "3"));
+        val result = listOf(1, 2, 3, 1).associateBy { it }
+        Assert.assertEquals(result, mapOf(1 to 1, 2 to 2, 3 to 3));
     }
 
     @Test
     fun test2() {
-        val result = personList.toDictionary { it.id }
+        val result = personList.associateBy { it.id }
         val expected = mapOf(
                 0L to person000,
                 1L to person001,
@@ -52,8 +52,14 @@ class ToDictionaryTest {
         Assert.assertEquals(expected, result)
     }
 
-    @Test(expected = IllegalArgumentException::class)
+    @Test
     fun test3() {
-        personList.toDictionary { it.teamId }
+        val result = personList.associateBy { it.teamId }
+        val expected = mapOf(
+                0L to person002,
+                1L to person005,
+                2L to person006
+        )
+        Assert.assertEquals(expected, result)
     }
 }
