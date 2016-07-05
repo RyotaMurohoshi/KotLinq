@@ -16,6 +16,9 @@ Ryota Murohoshi is game Programmer and C#er in Japan.
 
 // TODO write
 
+* emptyList.sum() == 0.0
+* associateBy results duplicateKey, no throwing exception
+
 # Difference from C# LINQ
 
 // TODO write

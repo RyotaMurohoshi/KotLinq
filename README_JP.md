@@ -14,12 +14,18 @@ KotlinにおけるLINQライクなコレクション操作APIライブラリで�
 
 // 書くこと
 
+
 # Kotlinのkotlin.collectionsやkotlin.sequences APIとの違い
+
 // 書くこと
+
+* emptyList.sum() == 0.0
+* duplicateKey　associateBy never throw exception
 
 # C#のLINQとの違い
 
 // 書くこと
+
 * no some interfaces arguments
 * selectWithIndex and whereWithIndex
 * average, min, max and sum problems
