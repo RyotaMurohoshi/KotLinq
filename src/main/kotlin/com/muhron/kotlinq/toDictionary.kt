@@ -4,13 +4,13 @@ fun <TSource, TKey> Sequence<TSource>.toDictionary(keySelector: (TSource) -> TKe
         toDictionary(keySelector, { it -> it })
 
 fun <TSource, TKey> Iterable<TSource>.toDictionary(keySelector: (TSource) -> TKey): Map<TKey, TSource> =
-        toDictionary(keySelector)
+        toDictionary(keySelector, { it -> it })
 
 fun <TSource, TKey> Array<TSource>.toDictionary(keySelector: (TSource) -> TKey): Map<TKey, TSource> =
-        toDictionary(keySelector)
+        toDictionary(keySelector, { it -> it })
 
 fun <TSourceK, TSourceV, TKey> Map<TSourceK, TSourceV>.toDictionary(keySelector: (Map.Entry<TSourceK, TSourceV>) -> TKey): Map<TKey, Map.Entry<TSourceK, TSourceV>> =
-        toDictionary(keySelector)
+        toDictionary(keySelector, { it -> it })
 
 fun <TSource, TKey, TElement> Iterable<TSource>.toDictionary(keySelector: (TSource) -> TKey, elementSelector: (TSource) -> TElement): Map<TKey, TElement> =
         asSequence().toDictionary(keySelector, elementSelector)
