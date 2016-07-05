@@ -10,5 +10,26 @@ KotlinにおけるLINQライクなコレクション操作APIライブラリで�
 * 投稿先:http://qiita.com/RyotaMurohoshi
 * Twitter:https://twitter.com/RyotaMurohoshi
 
+# kotlin.sequences.Sequenceについて
+
+// 書くこと
+
+
+# Kotlinのkotlin.collectionsやkotlin.sequences APIとの違い
+
+// 書くこと
+
+* emptyList.sum() == 0.0
+* duplicateKey　associateBy never throw exception
+
+# C#のLINQとの違い
+
+// 書くこと
+
+* no some interfaces arguments
+* selectWithIndex and whereWithIndex
+* average, min, max and sum problems
+* nullable return type methods
+
 # ライセンス
 MIT License です。

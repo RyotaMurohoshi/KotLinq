@@ -8,6 +8,26 @@ Ryota Murohoshi is game Programmer and C#er in Japan.
 * Posts:http://qiita.com/RyotaMurohoshi (JPN)
 * Twitter:https://twitter.com/RyotaMurohoshi (JPN)
 
+# About kotlin.sequences.Sequence
+
+// TODO write
+
+# Difference from Kotlin collections and Sequence API
+
+// TODO write
+
+* emptyList.sum() == 0.0
+* associateBy results duplicateKey, no throwing exception
+
+# Difference from C# LINQ
+
+// TODO write
+
+* no some interfaces arguments
+* selectWithIndex and whereWithIndex
+* average, min, max and sum problems
+* nullable return type methods
+
 # License
 
 This library is under MIT License.
