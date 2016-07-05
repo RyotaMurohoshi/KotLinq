@@ -3,7 +3,7 @@ package com.muhron.kotlinq.default_methods
 import org.junit.Assert
 import org.junit.Test
 
-class ToDictionaryTest {
+class AssociateTest {
 
     data class Person(val id: Long, val name: String, val teamId: Long)
 
