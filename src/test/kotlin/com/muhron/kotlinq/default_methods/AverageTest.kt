@@ -14,6 +14,6 @@ class AverageTest {
     @Test
     fun test1() {
         val result = emptyList<Int>().average()
-        Assert.assertTrue(result == 0.0)
+        Assert.assertTrue(result.isNaN())
     }
 }
